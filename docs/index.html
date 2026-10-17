@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to use QAmeleon</title>
+<meta name="description" content="Setup, console and reference guide for QAmeleon.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F3EE}
+a{color:#1E2227}a:hover{color:#4A535B}
+.doc h2{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(30px,3.6vw,42px);line-height:1.05;font-weight:800;letter-spacing:-0.03em;scroll-margin-top:24px}
+.doc h3{margin:8px 0 0;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:22px;line-height:1.2;font-weight:700}
+.doc p{margin:0}
+.doc section{display:flex;flex-direction:column;gap:16px;padding:56px 0;border-top:1px solid #DCD8CE;scroll-margin-top:24px}
+.doc .kick{font-size:14px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#2E6B44}
+.doc .lead{font-size:20px;color:#4A535B;max-width:720px}
+.doc ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.doc ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:14px}
+.doc ol.steps>li{counter-increment:s;position:relative;padding-left:52px;min-height:36px}
+.doc ol.steps>li::before{content:counter(s);position:absolute;left:0;top:-2px;width:36px;height:36px;border-radius:999px;background:#7DD69B;color:#1E2227;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center}
+.doc code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.86em;background:#E9E5DB;padding:2px 6px;border-radius:6px;overflow-wrap:anywhere}
+.doc .term{background:#1E2227;color:#DCE2E6;border-radius:16px;padding:18px 22px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:15px;line-height:1.8;overflow-x:auto;white-space:pre}
+.doc .term b{color:#7DD69B;font-weight:500}
+.doc .tip{background:#FFFFFF;border:1px solid #DCD8CE;border-left:0;border-radius:16px;padding:18px 22px;display:flex;flex-direction:column;gap:6px}
+.doc .tip strong{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:18px}
+.doc .warn{background:#FFF6DB;border:1px solid #E8D59A}
+.doc .ui{font-weight:700;background:#FFFFFF;border:1px solid #DCD8CE;border-radius:8px;padding:1px 8px;white-space:nowrap}
+.doc .tw{overflow-x:auto;border:1px solid #DCD8CE;border-radius:16px;background:#FFFFFF}
+.doc table{border-collapse:collapse;width:100%;min-width:560px;font-size:16.5px}
+.doc th{text-align:left;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;padding:12px 16px;background:#EFECE4;border-bottom:1px solid #DCD8CE}
+.doc td{padding:12px 16px;border-bottom:1px solid #ECE8DF;vertical-align:top}
+.doc tr:last-child td{border-bottom:0}
+.doc .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px}
+.doc .card{background:#FFFFFF;border:1px solid #DCD8CE;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.doc .card strong{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:20px}
+.doc .top{font-size:15px;font-weight:700;color:#2E6B44;text-decoration:none}
+.toc a{display:flex;align-items:center;min-height:36px;padding:2px 12px;border-radius:10px;color:#C5CDD3;text-decoration:none;font-size:16px}
+.toc a:hover{background:#353B42;color:#F2F5F7}
+.toc h2{margin:14px 0 4px;padding:0 12px;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#A9B3BB;font-family:'Atkinson Hyperlegible',sans-serif}
+</style>
+</head>
+<body>
+<div style="background: #F5F3EE; color: #1E2227; font-family: 'Atkinson Hyperlegible', 'Verdana', sans-serif; font-size: 18px; line-height: 1.6">
+
+<header style="background: #2B3036; color: #F2F5F7">
+<nav aria-label="Main" style="max-width: 1280px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="/" style="display: flex; align-items: center; gap: 10px; color: #F2F5F7; text-decoration: none; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.03em">
+<svg viewBox="140 280 560 500" style="width: 46px; height: auto; display: block" aria-hidden="true">
+<path d="M 340 374 L 370 348 L 396 374 Z" fill="#4FA86C"></path>
+<path d="M 394 374 L 420 348 L 448 374 Z" fill="#4FA86C"></path>
+<path d="M 468 588 Q 528 628 556 662 C 588 702 562 728 530 718 C 504 708 506 680 526 678" fill="none" stroke="#7DD69B" stroke-width="46" stroke-linecap="round"></path>
+<ellipse cx="361" cy="655" rx="28" ry="15" fill="#4FA86C"></ellipse>
+<ellipse cx="431" cy="655" rx="28" ry="15" fill="#4FA86C"></ellipse>
+<circle cx="393" cy="508" r="143" fill="#7DD69B"></circle>
+<path d="M 424 396 Q 500 446 500 548" fill="none" stroke="#4FA86C" stroke-opacity="0.45" stroke-width="13" stroke-linecap="round"></path>
+<path d="M 256 530 Q 306 556 362 538" fill="none" stroke="#1D2125" stroke-width="6" stroke-linecap="round"></path>
+<circle cx="330" cy="465" r="48" fill="#A8E6BC" stroke="#4FA86C" stroke-width="6"></circle>
+<circle cx="313" cy="463" r="17" fill="#1D2125"></circle>
+<circle cx="306" cy="456" r="6" fill="#FFFFFF"></circle>
+</svg>
+<span><span style="color: #7DD69B">QA</span>meleon</span>
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; font-size: 17px">
+<a href="/" style="color: #C5CDD3; text-decoration: none">Product</a>
+<a href="#contents" aria-current="page" style="color: #F2F5F7; text-decoration: none; font-weight: 700">Docs</a>
+<a href="/#start" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #7DD69B; color: #1E2227; text-decoration: none; font-weight: 700">Get early access</a>
+</div>
+</nav>
+<div style="max-width: 1280px; margin: 0 auto; padding: 40px 24px 72px; display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #7DD69B">Documentation</p>
+<h1 style="margin: 0; max-width: 900px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(44px, 6vw, 76px); line-height: 0.98; font-weight: 800; letter-spacing: -0.035em">How to use QAmeleon</h1>
+<p style="margin: 0; max-width: 700px; font-size: 21px; line-height: 1.5; color: #C5CDD3">Every screen, step by step. Setup takes about ten minutes, then the console is home: the morning report, the reviews, what waits for you, and where the report goes.</p>
+</div>
+</header>
+
+<div style="max-width: 1280px; margin: 0 auto; padding: 40px 24px 96px; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 48px">
+
+<nav id="contents" class="toc" aria-label="On this page" style="flex: 1 1 260px; max-width: 100%; background: #2B3036; border-radius: 22px; padding: 12px 10px 18px; display: flex; flex-direction: column; gap: 2px">
+<h2>Getting started</h2>
+<a href="#overview">What QAmeleon does</a>
+<a href="#before">Before you start</a>
+<a href="#open-setup">Open setup</a>
+<h2>Setup, step by step</h2>
+<a href="#setup-welcome">Welcome</a>
+<a href="#setup-git">1. Git</a>
+<a href="#setup-product">2. Product</a>
+<a href="#setup-accounts">3. Accounts</a>
+<a href="#setup-board">4. Board</a>
+<a href="#setup-build">5. First run</a>
+<a href="#setup-loop">6. Review and refine</a>
+<h2>The console</h2>
+<a href="#console">Opening the console</a>
+<a href="#console-today">Today</a>
+<a href="#console-report">Morning report</a>
+<a href="#console-queue">Queue</a>
+<a href="#console-waiting">Waiting for you</a>
+<a href="#console-history">History</a>
+<a href="#console-connections">Connections</a>
+<a href="#console-controls">Controls</a>
+<a href="#console-settings">Settings</a>
+<h2>Send the report</h2>
+<a href="#slack">Slack</a>
+<a href="#teams">Microsoft Teams</a>
+<a href="#email">Email</a>
+<a href="#datadog">Datadog</a>
+<a href="#webhook">Any webhook</a>
+<h2>Reference</h2>
+<a href="#results">Reading the results</a>
+<a href="#guards">What gets held, and why</a>
+<a href="#cli">Command line</a>
+<a href="#trouble">Troubleshooting</a>
+</nav>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+
+<section id="overview" style="border-top: 0; padding-top: 8px">
+<p class="kick">Getting started</p>
+<h2>What QAmeleon does</h2>
+<p class="lead">QAmeleon is a QA engineer that runs in your own CI. It checks your dev app every weekday morning and after every deploy, reviews the tickets waiting for QA, and raises what it finds on your board with steps to reproduce.</p>
+<div class="grid2">
+<div class="card"><strong>Morning and deploy checks</strong><p>Pages, API shapes, speed, sign-in, who can see what, and accessibility. A one-screen summary goes where you choose; the full report lands in your console and on your board.</p></div>
+<div class="card"><strong>Ticket reviews</strong><p>It runs each ticket's "How to verify manually" steps on dev and judges the change five ways: UI, UX, Regression, Old Man Testing and Automation.</p></div>
+<div class="card"><strong>Findings on your board</strong><p>Each real bug becomes its own ticket with steps to reproduce, expected, actual and how to verify. Never raised twice.</p></div>
+<div class="card"><strong>Guards</strong><p>Security findings, critical findings and anything odd in a ticket wait for a person. A pause button stops all publishing at once.</p></div>
+</div>
+<p>It runs on your GitHub Actions and your own Anthropic key. Your code, tickets and pages never reach us.</p>
+</section>
+
+<section id="before">
+<p class="kick">Getting started</p>
+<h2>Before you start</h2>
+<p class="lead">Have these ready and setup runs straight through in about ten minutes.</p>
+<div class="tw"><table>
+<thead><tr><th scope="col">You need</th><th scope="col">Why</th></tr></thead>
+<tbody>
+<tr><td><strong>Node.js 22 or newer</strong></td><td>QAmeleon runs on Node, on your machine for setup and in CI after.</td></tr>
+<tr><td><strong>The GitHub CLI, signed in</strong></td><td>Install it from <a href="https://cli.github.com">cli.github.com</a> and run <code>gh auth login</code>. Setup uses your login to open a pull request and save secrets. You need write access to the repository.</td></tr>
+<tr><td><strong>A repository on GitHub with Actions</strong></td><td>QAmeleon adds one workflow and runs there. GitLab is coming soon.</td></tr>
+<tr><td><strong>Your dev app, running</strong></td><td>The address of a dev or test environment. Never production.</td></tr>
+<tr><td><strong>Two test accounts in different customers</strong></td><td>So it can prove one customer cannot see another's data. A third, borrowed account with real data is optional and stays look only.</td></tr>
+<tr><td><strong>A board: Jira or Trello</strong></td><td>For Jira, an API token. For Trello, an API key and token. You will pick three columns.</td></tr>
+<tr><td><strong>An Anthropic API key</strong></td><td>Ticket reviews run on it. We suggest a separate workspace with a spend limit. The morning and deploy checks cost nothing.</td></tr>
+</tbody>
+</table></div>
+<div class="tip"><strong>Passwords and keys never go into the page</strong><p>Whenever setup needs a secret, it asks in the terminal with a hidden prompt and saves it straight to your repository's GitHub secrets. You never paste a secret into a browser or a file.</p></div>
+</section>
+
+<section id="open-setup">
+<p class="kick">Getting started</p>
+<h2>Open setup</h2>
+<ol class="steps">
+<li>Open a terminal in any folder and run:
+<div class="term"><b>$</b> npx qameleon setup</div></li>
+<li>Your browser opens the setup page. It is served from your own machine only, with a one-time key, so nobody else can reach it.</li>
+<li>Keep the terminal open beside it. When setup needs a password or token, an amber box says <span class="ui">Your turn, in the terminal</span>. Type it there, not in the browser.</li>
+</ol>
+<p>The page has three parts: the steps on the left (Connect, Build, Loop), the current step in the middle, and QAmeleon on the right, who tells you what is happening and changes mood as it goes. A step unlocks once the one before it is done, and you can go back to any finished step from the left.</p>
+<div class="tip"><strong>Prefer the terminal?</strong><p>Every setup step has a command too. Run <code>npx qameleon help</code> for the list, or see <a href="#cli">Command line</a>.</p></div>
+</section>
+
+<section id="setup-welcome">
+<p class="kick">Setup</p>
+<h2>Welcome</h2>
+<p class="lead">The first screen says what is about to happen: connect your repo, your dev app and your board, then QAmeleon checks every build and reviews the tickets waiting for QA.</p>
+<p>Three promises are on the screen, and they hold for the whole setup: it runs on your CI with your own Anthropic key, nothing is posted until you approve, and its writes are fenced so it never pays, publishes or deletes.</p>
+<ol class="steps"><li>Press <span class="ui">Let's start</span>.</li></ol>
+</section>
+
+<section id="setup-git">
+<p class="kick">Setup, Connect 1 of 4</p>
+<h2>Git: pick your repo</h2>
+<p class="lead">This is where QAmeleon will live. It adds one workflow so it runs in your own CI.</p>
+<ol class="steps">
+<li>Leave <span class="ui">GitHub</span> selected.</li>
+<li>Pick your repository from the list. The list shows every repository your GitHub login can push to.</li>
+<li>Read the box underneath: it lists the exact files QAmeleon will add in one pull request.</li>
+<li>Press <span class="ui">Continue</span>.</li>
+</ol>
+<div class="tip"><strong>Nothing goes to your main branch yet</strong><p>The pull request opens at the end of setup on a branch called <code>qauto/setup</code>. Running setup again updates the same pull request rather than opening a new one.</p></div>
+<div class="tip warn"><strong>A red box on this step?</strong><p>If the repository already runs QAmeleon, setup says so, because carrying on would replace its saved memory. Pick another repository, or carry on only if you mean to set it up again.</p></div>
+</section>
+
+<section id="setup-product">
+<p class="kick">Setup, Connect 2 of 4</p>
+<h2>Product: point QAmeleon at your dev app</h2>
+<p class="lead">QAmeleon works out how your app signs in and where its API is. You only confirm.</p>
+<ol class="steps">
+<li>Type your dev app's address in <span class="ui">Dev app address</span>, for example <code>https://dev.yourapp.com</code>.</li>
+<li>Press <span class="ui">Have a look</span> (or Enter). QAmeleon opens the app, finds the sign-in form and listens to the API calls.</li>
+<li>Check the list it found: sign-in page, API address, how the session is kept, the build file and your time zone.</li>
+<li>If something is missing, a red box says what, and a field appears for it: <span class="ui">Sign-in page</span> (for example <code>/account/login</code>) or <span class="ui">API host</span> (for example <code>api.yourapp.com</code>). Fill it in and press <span class="ui">Have a look</span> again.</li>
+<li>When it is right, press <span class="ui">Looks right</span>.</li>
+</ol>
+<div class="tip"><strong>No real account is touched</strong><p>To find the API, QAmeleon tries one sign-in with a made-up address ending in <code>.invalid</code>. If you get something wrong here, you can change it later from Settings in the console.</p></div>
+</section>
+
+<section id="setup-accounts">
+<p class="kick">Setup, Connect 3 of 4</p>
+<h2>Accounts: add test accounts</h2>
+<p class="lead">Two accounts in different customers let QAmeleon check one customer cannot reach another's data. A borrowed account with real data unblocks deeper review steps.</p>
+<p>The screen lists the accounts it wants: an owner, a second customer, and an optional borrowed account. For each one, choose how QAmeleon may use it:</p>
+<div class="tw"><table>
+<thead><tr><th scope="col">Choice</th><th scope="col">What it means</th></tr></thead>
+<tbody>
+<tr><td><span class="ui">Own data</span></td><td>A test account QAmeleon may create and delete its own test records in. Records are clearly named and cleaned up every run.</td></tr>
+<tr><td><span class="ui">Look only</span></td><td>Every write is blocked, with no exceptions. Use it for an account with real data that you are lending.</td></tr>
+</tbody>
+</table></div>
+<ol class="steps">
+<li>Set <span class="ui">Own data</span> or <span class="ui">Look only</span> on each account. At least one account needs its own data.</li>
+<li>Press <span class="ui">Add passwords and check</span>.</li>
+<li>In the terminal, type each account's email and password when asked. Skip an optional account by pressing Enter.</li>
+<li>QAmeleon signs in with each one to prove it works. Each account shows <span class="ui">Signed in</span>, <span class="ui">Skipped</span> or <span class="ui">Not signed in</span>.</li>
+<li>When they all work, press <span class="ui">Continue</span>.</li>
+</ol>
+<div class="tip"><strong>If one does not sign in</strong><p>The red box names the account and why. Press the button again: it asks only for the account that failed. Nothing is saved until every account signs in.</p></div>
+</section>
+
+<section id="setup-board">
+<p class="kick">Setup, Connect 4 of 4</p>
+<h2>Board: connect your board</h2>
+<p class="lead">Tell QAmeleon where tickets wait for QA, where to put what it finds, and where verified passes go.</p>
+<h3>Jira</h3>
+<ol class="steps">
+<li>Choose <span class="ui">Jira</span>.</li>
+<li>Fill in <span class="ui">Jira address</span> (for example <code>yourcompany.atlassian.net</code>), <span class="ui">Jira account email</span> and <span class="ui">Project key</span> (for example <code>APP</code>).</li>
+<li>Press <span class="ui">Load columns</span>. In the terminal, type the API token for that email. Create one at <a href="https://id.atlassian.com/manage-profile/security/api-tokens">id.atlassian.com, Security, API tokens</a>.</li>
+</ol>
+<h3>Trello</h3>
+<ol class="steps">
+<li>Choose <span class="ui">Trello</span>.</li>
+<li>Paste the <span class="ui">Trello board address</span> (for example <code>https://trello.com/b/AbCd1234/my-board</code>).</li>
+<li>Give a <span class="ui">Short key for cards</span>, for example <code>APP</code>. Cards are then named APP-12, from their number on the board.</li>
+<li>Press <span class="ui">Load columns</span>. In the terminal, type your Trello API key and then your token. Both come from <a href="https://trello.com/power-ups/admin">trello.com/power-ups/admin</a>, under your Power-Up's API key.</li>
+</ol>
+<h3>Pick the three columns</h3>
+<div class="tw"><table>
+<thead><tr><th scope="col">Field</th><th scope="col">Pick</th></tr></thead>
+<tbody>
+<tr><td><span class="ui">Tickets wait for QA in</span></td><td>The column developers move tickets to when they are ready for testing, for example "Ready for QA".</td></tr>
+<tr><td><span class="ui">Put findings in</span></td><td>A triage column for the bugs QAmeleon raises, for example "QAmeleon found".</td></tr>
+<tr><td><span class="ui">Move verified passes to</span></td><td>Where a ticket goes when every step passed, for example "Passed QA". QAmeleon only ever moves tickets forward from the review column, never back, and never to Done.</td></tr>
+</tbody>
+</table></div>
+<ol class="steps"><li>Press <span class="ui">Continue</span>. The token is saved to your GitHub secrets.</li></ol>
+<div class="tip"><strong>Other boards</strong><p>Notion is coming soon. <span class="ui">Your own</span> links to the guide for connecting any other board. Slack, Teams, email and Datadog are not set up here: you add them in the console, under <a href="#console-connections">Connections</a>.</p></div>
+</section>
+
+<section id="setup-build">
+<p class="kick">Setup, Build</p>
+<h2>First run: the dry run</h2>
+<p class="lead">QAmeleon checks everything and posts nothing. You approve the result as the baseline every later run is compared against.</p>
+<ol class="steps">
+<li>Press <span class="ui">Start dry run</span>. A list shows each check as it runs, with a tick when done. It takes about a minute.</li>
+<li>Read the four numbers: <strong>checks passed</strong>, <strong>serious findings</strong>, <strong>minor findings</strong> and <strong>test records left behind</strong> (this should be 0).</li>
+<li>Read any findings underneath. Each has a severity and what QAmeleon saw.</li>
+<li>Press <span class="ui">Approve as baseline</span>. Or <span class="ui">Run again</span> if you fixed something first.</li>
+</ol>
+<div class="tip"><strong>Approving does not accept the bugs</strong><p>The baseline is only the starting point. Access and security checks run again every morning and keep reporting a problem until it is fixed. Page issues from this first scan become the starting point, so raise any you want fixed now.</p></div>
+</section>
+
+<section id="setup-loop">
+<p class="kick">Setup, Loop</p>
+<h2>Review and refine</h2>
+<p class="lead">The loop is on. This screen shows what now runs on its own, and offers to review the tickets already waiting.</p>
+<div class="grid2">
+<div class="card"><strong>Weekdays 07:30</strong><p>The morning check, in your time zone. Report on the board and in your console.</p></div>
+<div class="card"><strong>Every deploy</strong><p>Checks the new build on dev.</p></div>
+<div class="card"><strong>Your review column</strong><p>Reviews tickets when you ask.</p></div>
+<div class="card"><strong>Your findings column</strong><p>Bugs land here with repro steps.</p></div>
+</div>
+<h3>Review the first batch</h3>
+<ol class="steps">
+<li>Check the list of tickets waiting and the cost estimate under it. A review usually costs between $0.30 and $0.65 a ticket on your Anthropic key.</li>
+<li>Press <span class="ui">Review</span>. The first time, the terminal asks for your Anthropic API key. It is saved for CI.</li>
+<li>Watch each ticket go from Waiting to Reviewing to Reviewed. Each takes a few minutes, and the line under it says what QAmeleon is doing right now.</li>
+<li>Read the result on each ticket, then press <span class="ui">Approve and publish</span>. Or <span class="ui">Not now</span>: nothing is touched.</li>
+</ol>
+<h3>Merge, then open your console</h3>
+<ol class="steps">
+<li>Press <span class="ui">Merge pull request</span>. This adds the workflow and your settings to your main branch, which switches on the morning check. Nothing else in your code changes.</li>
+<li>Rather merge it yourself on GitHub? Do that, then press <span class="ui">I've merged it, check again</span>.</li>
+<li>Press <span class="ui">Open your console</span>. Setup is done.</li>
+</ol>
+<div class="tip"><strong>Next time</strong><p>Run <code>qameleon</code> in your repository folder. It opens the console once setup is done, and setup in a folder that is not connected yet.</p></div>
+<a class="top" href="#contents">Back to the contents</a>
+</section>
+
+<section id="console">
+<p class="kick">The console</p>
+<h2>Opening the console</h2>
+<p class="lead">The console is home after setup. Like setup, it runs on your own machine and opens in your browser.</p>
+<div class="term"><b>$</b> qameleon            <span style="color: #8A96A0"># in your repository folder</span>
+<b>$</b> qameleon console    <span style="color: #8A96A0"># the same, by name</span></div>
+<p>The menu on the left has eight pages: Today, Morning report, Queue, Waiting for you, History, Connections, Controls and Settings. Queue and Waiting for you show a count; the Waiting count turns amber when something needs you. QAmeleon sits on the right and says, in one line, what matters on the page you are on.</p>
+<p>The console shares memory with CI, so a pause or an approval you make here reaches the next CI run.</p>
+</section>
+
+<section id="console-today">
+<p class="kick">Console</p>
+<h2>Today</h2>
+<p class="lead">The front page: is QAmeleon publishing, does anything need you, and how did this morning go.</p>
+<h3>What you see</h3>
+<ul>
+<li><strong>The banner</strong> says how publishing stands: <em>QAmeleon publishes on its own</em> (green), <em>Approval mode</em> or <em>Tightened</em> (amber), or <em>Paused</em> (red), with <span class="ui">Go to Controls</span> when it is not green.</li>
+<li><strong>Four cards:</strong> Waiting for you, the number of tickets in your review column, the last 24 hours (published, held, bugs raised and cost), and the share of findings your team accepted.</li>
+<li><strong>Rejected findings:</strong> a bar showing how many findings people rejected, with an amber mark at the limit. Above it, QAmeleon stops publishing on its own.</li>
+<li><strong>This morning:</strong> the morning check's result with <span class="ui">Read it</span>, the build on dev and when it was deployed, and the last batch.</li>
+</ul>
+<h3>What to do</h3>
+<p>Click a card to go to that page. If Waiting for you is above 0, start there.</p>
+</section>
+
+<section id="console-report">
+<p class="kick">Console</p>
+<h2>Morning report</h2>
+<p class="lead">The latest morning or deploy check, wherever it ran, plus the last runs.</p>
+<ul>
+<li><strong>The title</strong> is the verdict: <em>Nothing to do</em> (green), <em>Worth a look</em> (amber) or <em>Needs attention</em> (red). The banner under it names the check, when it ran and the one-line summary.</li>
+<li><strong>Recent runs</strong> lists the last seven, each with its colour and summary.</li>
+<li><strong>The full report</strong> follows: builds, API changes, test results, speed, access checks, page scans, and what the run wrote on dev (always its own test data, with "nothing left behind").</li>
+</ul>
+<p>Before the first morning check runs, the page says <em>No report yet</em>. See <a href="#results">Reading the results</a> for what each colour means.</p>
+</section>
+
+<section id="console-queue">
+<p class="kick">Console</p>
+<h2>Queue</h2>
+<p class="lead">The tickets in your review column. Pick some and QAmeleon reviews them on dev.</p>
+<ol class="steps">
+<li>Press <span class="ui">Refresh</span> if you moved cards in since the page was read.</li>
+<li>Pick the tickets to review, or press <span class="ui">Pick all</span>. Up to 10 go in one batch. Each ticket shows how many steps it has to verify (or that it will be reviewed against its description) and when it was last reviewed.</li>
+<li>Check the estimated cost at the bottom, worked out from your board's past reviews.</li>
+<li>Press <span class="ui">Review</span>. Each ticket runs in its own session behind the write fence, and the list shows Waiting, Reviewing and Reviewed.</li>
+<li>When the batch is done, the page shows what was <strong>published by QAmeleon</strong> (with any bugs raised and tickets moved) and what was <strong>held for a person</strong>, with the cost.</li>
+<li>If anything was held, press <span class="ui">Go to Waiting for you</span>. Otherwise <span class="ui">Back to the queue</span>.</li>
+</ol>
+<div class="tip"><strong>Paused or tightened?</strong><p>Reviews still run, and every one waits for you on Waiting for you.</p></div>
+</section>
+
+<section id="console-waiting">
+<p class="kick">Console</p>
+<h2>Waiting for you</h2>
+<p class="lead">Every review a guard held, each with the reason and what accepting it means. Guards cannot be switched off, only accepted one review at a time, by name.</p>
+<h3>What each card shows</h3>
+<ul>
+<li>The ticket, and a chip for each guard that held it.</li>
+<li>A summary, how many steps passed, failed or were blocked, when it ran and what it cost.</li>
+<li>What the guard means in plain words, the findings with their evidence, and any flagged lines from the ticket, shown as text and never followed.</li>
+</ul>
+<h3>What to do</h3>
+<ol class="steps">
+<li>Type <span class="ui">Your name</span>. Approvals are recorded on the ticket under it.</li>
+<li>Read the card. Tick each box it asks for, for example "I have checked the evidence and agree it is critical".</li>
+<li>Press the card's button:
+<ul style="margin-top: 8px">
+<li><span class="ui">Approve and publish</span> puts the review on the board.</li>
+<li><span class="ui">Run again</span> appears when nothing was reviewed yet, for example when the app was down.</li>
+<li><span class="ui">Sign off and move</span> appears when a review passed but a hold label asked for a person to sign it off.</li>
+</ul></li>
+<li>If reviews were held only by a pause or tightening that is now over, press <span class="ui">Publish through the guards</span> at the top. Anything another guard holds stays.</li>
+</ol>
+<p>See <a href="#guards">What gets held, and why</a> for every guard.</p>
+</section>
+
+<section id="console-history">
+<p class="kick">Console</p>
+<h2>History</h2>
+<p class="lead">Everything QAmeleon did and who approved what, newest first.</p>
+<p>Each batch shows when it ran, who started it and what it cost, then a line per ticket: <em>Published</em> (with any bugs raised and their severity, and where the ticket moved) or <em>Held</em> (with the guards). Every pause, resume, reset, approval and sign-off is there too, with the person's name.</p>
+</section>
+
+<section id="console-connections">
+<p class="kick">Console</p>
+<h2>Connections</h2>
+<p class="lead">Where the report goes. Every morning check and every deploy check is sent to each place switched on here, from your own CI.</p>
+<h3>Add a place to send it</h3>
+<ol class="steps">
+<li>Under <span class="ui">Add a place to send it</span>, choose <span class="ui">Slack</span>, <span class="ui">Microsoft Teams</span>, <span class="ui">Email</span>, <span class="ui">Datadog</span> or <span class="ui">Any webhook</span>.</li>
+<li>Fill in any fields it asks for (email and Datadog have some; the others have none).</li>
+<li>Press <span class="ui">Save and type the secrets</span>, then type the address or key in the terminal that runs the console. It goes straight to your repository's GitHub secrets.</li>
+<li>Press <span class="ui">Send a test</span> on its row. Check it arrived.</li>
+<li>Commit <code>qa.config.json</code>. The amber banner reminds you: until it is committed, the morning check in CI still sends to the old list.</li>
+</ol>
+<h3>Each row</h3>
+<p>A row shows the destination, where it posts, and a chip: <em>On</em>, <em>Off</em> or <em>Needs a secret</em>. Use <span class="ui">Switch off</span> or <span class="ui">Switch on</span> to pause one, <span class="ui">Send a test</span> to try it, and <span class="ui">Remove</span> (then <span class="ui">Remove it</span> to confirm) to delete it.</p>
+<p>Step by step for each one: <a href="#slack">Slack</a>, <a href="#teams">Teams</a>, <a href="#email">Email</a>, <a href="#datadog">Datadog</a>, <a href="#webhook">Any webhook</a>.</p>
+</section>
+
+<section id="console-controls">
+<p class="kick">Console</p>
+<h2>Controls</h2>
+<p class="lead">Stop, start and reset. Every change is recorded with a name.</p>
+<ol class="steps">
+<li>Type <span class="ui">Your name</span>.</li>
+<li><strong>Kill switch.</strong> Press <span class="ui">Pause publishing</span> to stop all publishing at once. Reviews in flight still finish and wait for you. Press <span class="ui">Resume publishing</span> to turn it back on.</li>
+<li><strong>Automatic tightening.</strong> The panel shows how many recent findings were rejected. Above the limit, QAmeleon stops publishing on its own and asks first. Read what was rejected, then press <span class="ui">Reset</span>.</li>
+<li><strong>The guards.</strong> The list at the bottom shows every guard, always on, and whether publishing is in auto or approval mode.</li>
+</ol>
+<div class="tip"><strong>How a finding counts as rejected</strong><p>When someone on your team triages a finding as wrong, or not a bug, it counts against the rate. That is how your team's clicks keep QAmeleon honest.</p></div>
+</section>
+
+<section id="console-settings">
+<p class="kick">Console</p>
+<h2>Settings</h2>
+<p class="lead">What QAmeleon is connected to, and how to change it.</p>
+<ul>
+<li><strong>Repository, app and board:</strong> the repository, the board and project, and the apps it tests.</li>
+<li><strong>Change what is connected:</strong> <span class="ui">Open setup</span> opens the setup wizard again, starting from what is connected now. Use it to connect another repository, point at a different app or API, change the test accounts, or move to another board. Changes reach CI through a pull request, as the first time.</li>
+<li><strong>Where the report goes:</strong> <span class="ui">Go to Connections</span>.</li>
+</ul>
+<a class="top" href="#contents">Back to the contents</a>
+</section>
+
+<section id="slack">
+<p class="kick">Send the report</p>
+<h2>Slack</h2>
+<p class="lead">The one-screen summary in a channel, every morning and after every deploy.</p>
+<h3>1. Make a Slack webhook</h3>
+<ol class="steps">
+<li>Go to <a href="https://api.slack.com/apps">api.slack.com/apps</a> and press <strong>Create New App</strong>, then <strong>From scratch</strong>. Call it QAmeleon and pick your workspace.</li>
+<li>In the app's menu, open <strong>Incoming Webhooks</strong> and switch <strong>Activate Incoming Webhooks</strong> on.</li>
+<li>Press <strong>Add New Webhook to Workspace</strong>, pick the channel (for example <code>#qa</code>) and press <strong>Allow</strong>.</li>
+<li>Copy the webhook address. It starts with <code>https://hooks.slack.com/services/</code>. Treat it like a password: anyone with it can post to that channel.</li>
+</ol>
+<h3>2. Add it in QAmeleon</h3>
+<ol class="steps">
+<li>In the console, open <strong>Connections</strong> and press <span class="ui">Slack</span>.</li>
+<li>Press <span class="ui">Save and type the secrets</span>.</li>
+<li>In the terminal, paste the webhook address when asked. It is hidden as you type and saved as <code>QA_SLACK_WEBHOOK_URL</code>.</li>
+<li>Press <span class="ui">Send a test</span>. A test message appears in the channel.</li>
+<li>Commit <code>qa.config.json</code>.</li>
+</ol>
+</section>
+
+<section id="teams">
+<p class="kick">Send the report</p>
+<h2>Microsoft Teams</h2>
+<p class="lead">The summary in a Teams channel, through a Workflows webhook.</p>
+<h3>1. Make a Teams workflow</h3>
+<ol class="steps">
+<li>In Teams, open the channel, press <strong>More options</strong> (the three dots) next to it and choose <strong>Workflows</strong>.</li>
+<li>Pick the template <strong>Post to a channel when a webhook request is received</strong>, name it QAmeleon, and confirm the team and channel.</li>
+<li>Copy the address it gives you at the end.</li>
+</ol>
+<h3>2. Add it in QAmeleon</h3>
+<ol class="steps">
+<li>In <strong>Connections</strong>, press <span class="ui">Microsoft Teams</span>, then <span class="ui">Save and type the secrets</span>.</li>
+<li>Paste the address in the terminal. It is saved as <code>QA_TEAMS_WEBHOOK_URL</code>.</li>
+<li>Press <span class="ui">Send a test</span>, then commit <code>qa.config.json</code>.</li>
+</ol>
+</section>
+
+<section id="email">
+<p class="kick">Send the report</p>
+<h2>Email</h2>
+<p class="lead">The summary and the full report by email, sent through your own mail server.</p>
+<ol class="steps">
+<li>In <strong>Connections</strong>, press <span class="ui">Email</span>.</li>
+<li>Fill in <span class="ui">Send to</span> (one or more addresses, separated by commas), <span class="ui">Mail server</span> (for example <code>smtp.office365.com</code>), and optionally <span class="ui">From</span> and <span class="ui">Port</span> (587 is usual).</li>
+<li>Press <span class="ui">Save and type the secrets</span>. In the terminal, type the mail server's sign-in name, then its password (hidden). They are saved as <code>QA_SMTP_USER</code> and <code>QA_SMTP_PASSWORD</code>.</li>
+<li>Press <span class="ui">Send a test</span>, then commit <code>qa.config.json</code>.</li>
+</ol>
+<div class="tip"><strong>Sign-in refused?</strong><p>Some providers need SMTP sign-in switched on for the mailbox, or an app password instead of the normal one. Your mail admin can tell you which.</p></div>
+</section>
+
+<section id="datadog">
+<p class="kick">Send the report</p>
+<h2>Datadog</h2>
+<p class="lead">An event for every run, plus numbers to graph: tests failed, sign-in time and open findings.</p>
+<ol class="steps">
+<li>In Datadog, open <strong>Organization Settings</strong>, then <strong>API Keys</strong>, and create a key called QAmeleon. Copy it.</li>
+<li>In <strong>Connections</strong>, press <span class="ui">Datadog</span>.</li>
+<li>Choose your <span class="ui">Datadog site</span>: the one in your Datadog address, for example <code>datadoghq.eu</code>. Optionally add <span class="ui">Extra tags</span> such as <code>team:web, env:dev</code>.</li>
+<li>Press <span class="ui">Save and type the secrets</span> and paste the API key in the terminal. It is saved as <code>QA_DATADOG_API_KEY</code>.</li>
+<li>Press <span class="ui">Send a test</span>, then commit <code>qa.config.json</code>.</li>
+</ol>
+</section>
+
+<section id="webhook">
+<p class="kick">Send the report</p>
+<h2>Any webhook</h2>
+<p class="lead">The full report as JSON, for Zapier, Make, n8n or your own tool.</p>
+<ol class="steps">
+<li>Create a webhook trigger in your tool and copy its address. It must start with <code>https://</code>.</li>
+<li>In <strong>Connections</strong>, press <span class="ui">Any webhook</span>, then <span class="ui">Save and type the secrets</span>.</li>
+<li>Paste the address in the terminal. It is saved as <code>QA_REPORT_WEBHOOK_URL</code>.</li>
+<li>Press <span class="ui">Send a test</span> and check your tool received it, then commit <code>qa.config.json</code>.</li>
+</ol>
+<a class="top" href="#contents">Back to the contents</a>
+</section>
+
+<section id="results">
+<p class="kick">Reference</p>
+<h2>Reading the results</h2>
+<p class="lead">QAmeleon changes colour with the result, in the report, the review message and on your board. His face changes too, so you can read it at a glance in any colour.</p>
+<div class="tw"><table>
+<thead><tr><th scope="col">Colour</th><th scope="col">Means</th><th scope="col">Do</th></tr></thead>
+<tbody>
+<tr><td><strong>Green</strong>, nothing to do</td><td>Every check passed.</td><td>Nothing.</td></tr>
+<tr><td><strong>Amber</strong>, worth a look</td><td>Something changed, for example a new API field, or a review is waiting for a person.</td><td>Read the top line, then check it was meant.</td></tr>
+<tr><td><strong>Red</strong>, needs attention</td><td>A check or a step failed, and which deploy did it.</td><td>Read the report. Bugs from reviews are already on your board.</td></tr>
+</tbody>
+</table></div>
+<h3>Severity of a finding</h3>
+<div class="tw"><table>
+<thead><tr><th scope="col">Severity</th><th scope="col">When</th></tr></thead>
+<tbody>
+<tr><td><strong>Critical</strong></td><td>Only four cases: another account's data is reachable, data the customer already had is destroyed or corrupted, sign-in or payment is broken, or a feature nobody can use. Always waits for a person.</td></tr>
+<tr><td><strong>Serious</strong></td><td>A real failure people will hit, for example a change that does not save.</td></tr>
+<tr><td><strong>Moderate</strong></td><td>It works, but it misleads or gets in the way, for example a missing undo, or a limit shown only after the work is done.</td></tr>
+<tr><td><strong>Minor</strong></td><td>Polish. Minor findings go on one polish ticket per reviewed ticket, not one each.</td></tr>
+<tr><td><strong>Note</strong></td><td>Worth knowing, nothing to fix.</td></tr>
+</tbody>
+</table></div>
+<h3>Step results in a review</h3>
+<p>Each "How to verify manually" step is marked <strong>pass</strong>, <strong>fail</strong>, <strong>blocked</strong> (it says exactly what would unblock it, often a test account or some data) or <strong>for a person</strong> (it needs access QAmeleon does not have, such as a test card or cloud logs). A ticket moves on only when every step passed.</p>
+</section>
+
+<section id="guards">
+<p class="kick">Reference</p>
+<h2>What gets held, and why</h2>
+<p class="lead">QAmeleon publishes on its own unless one of these holds the review for a person. They are always on. You can add hold labels, not remove guards.</p>
+<div class="tw"><table>
+<thead><tr><th scope="col">Shown as</th><th scope="col">Why it waits</th></tr></thead>
+<tbody>
+<tr><td>Security finding</td><td>A person checks it before it goes on a board many people can read.</td></tr>
+<tr><td>Critical finding</td><td>The most costly thing to get wrong, so a person confirms it.</td></tr>
+<tr><td>A step about money</td><td>A step about paying or being charged needs a person.</td></tr>
+<tr><td>Lines aimed at the reviewer</td><td>Someone wrote instructions to QAmeleon in the ticket. They were not followed.</td></tr>
+<tr><td>The fence stopped something</td><td>The review tried a write or a site it is not allowed to.</td></tr>
+<tr><td>Hold label on the ticket</td><td>Someone asked for a person to sign this one off.</td></tr>
+<tr><td>Wrong build on the test site</td><td>The ticket names a fix build dev is not serving yet. Nothing was reviewed and nothing was spent.</td></tr>
+<tr><td>The app was down</td><td>Dev did not answer, so no review was started. Nothing was spent.</td></tr>
+<tr><td>Build changed mid-review</td><td>A deploy landed while QAmeleon was checking. Run it again on the new build.</td></tr>
+<tr><td>Too many findings in one batch</td><td>Often a sign dev was broken, not that everything failed.</td></tr>
+<tr><td>First batch on this board</td><td>No track record yet, so the first batch waits for a person.</td></tr>
+<tr><td>Waiting on another held ticket</td><td>Publish the ticket it points at first.</td></tr>
+<tr><td>Review stopped by the model provider</td><td>Read what was flagged, then run it again or review it by hand.</td></tr>
+<tr><td>Publishing paused or tightened</td><td>Someone pressed pause, or too many findings were rejected recently. See <a href="#console-controls">Controls</a>.</td></tr>
+</tbody>
+</table></div>
+<h3>Things QAmeleon never does</h3>
+<ul>
+<li>Pay, publish, send, invite or check out in your app. Those writes are always blocked.</li>
+<li>Write to a look-only account, or delete anything it did not create.</li>
+<li>Follow instructions written in a ticket.</li>
+<li>Move a ticket backwards, or to Done.</li>
+<li>Post a report with anything that looks like a password or token in it. If one is found, nothing goes out.</li>
+</ul>
+</section>
+
+<section id="cli">
+<p class="kick">Reference</p>
+<h2>Command line</h2>
+<p class="lead">Everything the setup page and the console do, you can also do from the terminal. <code>qa</code> and <code>qauto</code> still work as short names.</p>
+<div class="tw"><table>
+<thead><tr><th scope="col">Command</th><th scope="col">Does</th></tr></thead>
+<tbody>
+<tr><td><code>qameleon</code></td><td>Opens setup in a folder that is not connected yet, and the console once it is.</td></tr>
+<tr><td><code>qameleon setup</code></td><td>The setup page.</td></tr>
+<tr><td><code>qameleon console</code></td><td>The console.</td></tr>
+<tr><td><code>qameleon doctor</code></td><td>Checks the whole setup: config, secrets, and that each app answers.</td></tr>
+<tr><td><code>qameleon doctor --review</code></td><td>How ready reviews are, as a score, and the one next thing to add.</td></tr>
+<tr><td><code>qameleon run --dry-run</code></td><td>The full morning check. Posts nothing.</td></tr>
+<tr><td><code>qameleon review queue</code></td><td>Tickets waiting in the review column.</td></tr>
+<tr><td><code>qameleon review run APP-12 APP-14</code></td><td>Reviews those tickets and publishes what no guard holds.</td></tr>
+<tr><td><code>qameleon review approve APP-12 --by "Your Name"</code></td><td>Approves a held review. Add <code>--accept critical-finding</code> or <code>--accept security-finding</code> when the card asks.</td></tr>
+<tr><td><code>qameleon review pause --by "Your Name"</code></td><td>The kill switch. <code>review resume</code> turns it back on.</td></tr>
+<tr><td><code>qameleon review reset --by "Your Name"</code></td><td>Turns publishing back on after tightening.</td></tr>
+<tr><td><code>qameleon review status</code></td><td>Publishing mode, pause, tightening and acceptance rate.</td></tr>
+<tr><td><code>qameleon help</code></td><td>Every command.</td></tr>
+</tbody>
+</table></div>
+</section>
+
+<section id="trouble">
+<p class="kick">Reference</p>
+<h2>Troubleshooting</h2>
+<div class="tw"><table>
+<thead><tr><th scope="col">You see</th><th scope="col">Do this</th></tr></thead>
+<tbody>
+<tr><td>"The GitHub CLI is not installed" or "not signed in"</td><td>Install it from cli.github.com, run <code>gh auth login</code>, then try the step again.</td></tr>
+<tr><td>"This GitHub login is not allowed to do that"</td><td>Your login needs write access to the repository. Ask an owner, or pick another repository.</td></tr>
+<tr><td>The page seems stuck on a step</td><td>Look for the amber <span class="ui">Your turn, in the terminal</span> box. The terminal is waiting for you to type something.</td></tr>
+<tr><td>"Have a look" finds nothing</td><td>Check the dev app is running and the address opens in your browser. Then fill in the sign-in page or API host it asks for.</td></tr>
+<tr><td>An account says "Not signed in"</td><td>Check the email and password by signing in yourself, then press the button again. Only that account is asked for.</td></tr>
+<tr><td>"Jira did not accept that email and API token"</td><td>Make a new token for that exact email, press <span class="ui">Load columns</span> and type it again.</td></tr>
+<tr><td>"Trello did not accept that key and token"</td><td>Copy both again from trello.com/power-ups/admin. Key first, then token.</td></tr>
+<tr><td>Most review steps come back blocked</td><td>The test accounts are empty. Run <code>qameleon doctor --review</code>: it names the next thing to add, usually a look-only account with real data.</td></tr>
+<tr><td>A destination says "Needs a secret"</td><td>Remove it and add it again from the console, typing the secret in the terminal when asked.</td></tr>
+<tr><td>A new destination gets nothing in the morning</td><td>Commit <code>qa.config.json</code>. CI only sends to destinations in the committed file.</td></tr>
+<tr><td>"The setup server did not answer"</td><td>The terminal running setup was closed. Run <code>qameleon setup</code> again; it picks up where you were.</td></tr>
+</tbody>
+</table></div>
+<a class="top" href="#contents">Back to the contents</a>
+</section>
+
+</main>
+</div>
+
+<footer style="border-top: 1px solid #DCD8CE">
+<div style="max-width: 1280px; margin: 0 auto; padding: 32px 24px 48px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 15px; color: #4A535B">
+<span>© 2026 QAmeleon</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 24px">
+<a href="/">Home</a>
+</div>
+</div>
+</footer>
+
+</div>
+</body>
+</html>

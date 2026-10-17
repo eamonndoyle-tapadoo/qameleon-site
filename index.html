@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QAmeleon, AI QA for startups</title>
+<meta name="description" content="QAmeleon acts like your user, checks every ticket and tells you what to fix in plain words. Build with confidence.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F3EE}
+a{color:#1E2227}a:hover{color:#4A535B}
+</style>
+</head>
+<body>
+<div style="background: #F5F3EE; color: #1E2227; font-family: 'Atkinson Hyperlegible', 'Verdana', sans-serif; font-size: 18px; line-height: 1.55">
+
+<header style="background: #2B3036; color: #F2F5F7">
+<nav aria-label="Main" style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" style="display: flex; align-items: center; gap: 10px; color: #F2F5F7; text-decoration: none; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.03em">
+<svg viewBox="140 280 560 500" style="width: 46px; height: auto; display: block" aria-hidden="true">
+<ellipse cx="395" cy="712" rx="125" ry="9" fill="#16191D" fill-opacity="0"></ellipse>
+<path d="M 340 374 L 370 348 L 396 374 Z" fill="#4FA86C"></path>
+<path d="M 394 374 L 420 348 L 448 374 Z" fill="#4FA86C"></path>
+<path d="M 468 588 Q 528 628 556 662 C 588 702 562 728 530 718 C 504 708 506 680 526 678" fill="none" stroke="#7DD69B" stroke-width="46" stroke-linecap="round"></path>
+<path d="M 538 690 q -8 4 -2 10" fill="none" stroke="#4FA86C" stroke-width="3" stroke-linecap="round"></path>
+<ellipse cx="361" cy="655" rx="28" ry="15" fill="#4FA86C"></ellipse>
+<ellipse cx="431" cy="655" rx="28" ry="15" fill="#4FA86C"></ellipse>
+<circle cx="393" cy="508" r="143" fill="#7DD69B"></circle>
+<path d="M 424 396 Q 500 446 500 548" fill="none" stroke="#4FA86C" stroke-opacity="0.45" stroke-width="13" stroke-linecap="round"></path>
+<path d="M 392 612 Q 470 600 520 550" fill="none" stroke="#4FA86C" stroke-opacity="0.45" stroke-width="13" stroke-linecap="round"></path>
+<circle cx="462" cy="497" r="10" fill="#4FA86C" fill-opacity="0.45"></circle>
+<circle cx="490" cy="523" r="6" fill="#4FA86C" fill-opacity="0.45"></circle>
+<path d="M 256 530 Q 306 556 362 538" fill="none" stroke="#1D2125" stroke-width="6" stroke-linecap="round"></path>
+<circle cx="330" cy="465" r="48" fill="#A8E6BC" stroke="#4FA86C" stroke-width="6"></circle>
+<circle cx="313" cy="463" r="17" fill="#1D2125"></circle>
+<circle cx="306" cy="456" r="6" fill="#FFFFFF"></circle>
+</svg>
+<span><span style="color: #7DD69B">QA</span>meleon</span>
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; font-size: 17px">
+<a href="#how" style="color: #C5CDD3; text-decoration: none">How it works</a>
+<a href="#reviews" style="color: #C5CDD3; text-decoration: none">Ticket reviews</a>
+<a href="#safety" style="color: #C5CDD3; text-decoration: none">Safety</a>
+<a href="/docs/" style="color: #C5CDD3; text-decoration: none">Docs</a>
+<a href="#start" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #7DD69B; color: #1E2227; text-decoration: none; font-weight: 700">Get early access</a>
+</div>
+</nav>
+
+<section id="top" style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 96px; display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
+<div style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<p style="margin: 0; font-size: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #7DD69B">AI QA for startups without a QA team</p>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(48px, 7vw, 92px); line-height: 0.95; font-weight: 800; letter-spacing: -0.035em; text-wrap: balance">Your QA engineer starts at 07:30.</h1>
+<p style="margin: 0; max-width: 560px; font-size: 21px; line-height: 1.5; color: #C5CDD3">QAmeleon checks your app every morning and after every deploy, reviews the tickets waiting for QA, and raises what it finds on your board with steps to reproduce. It runs in your own CI, on your own keys.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; padding-top: 8px">
+<a href="#start" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; background: #7DD69B; color: #1E2227; text-decoration: none; font-weight: 700; font-size: 18px">Get early access</a>
+<a href="#how" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; border: 2px solid #5A646D; color: #F2F5F7; text-decoration: none; font-weight: 700; font-size: 18px">See how it works</a>
+</div>
+<p style="margin: 0; font-size: 15px; color: #A9B3BB">Daily and deploy checks are free for 14 days.</p>
+</div>
+
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 0">
+<svg viewBox="140 280 560 500" style="width: 100%; max-width: 420px; height: auto" role="img" aria-label="QAmeleon, a round green chameleon whose curled tail makes the letter Q">
+<ellipse cx="395" cy="712" rx="125" ry="9" fill="#16191D" fill-opacity="0.7"></ellipse>
+<path d="M 340 374 L 370 348 L 396 374 Z" fill="#4FA86C"></path>
+<path d="M 394 374 L 420 348 L 448 374 Z" fill="#4FA86C"></path>
+<path d="M 468 588 Q 528 628 556 662 C 588 702 562 728 530 718 C 504 708 506 680 526 678" fill="none" stroke="#7DD69B" stroke-width="46" stroke-linecap="round"></path>
+<path d="M 538 690 q -8 4 -2 10" fill="none" stroke="#4FA86C" stroke-width="3" stroke-linecap="round"></path>
+<ellipse cx="361" cy="655" rx="28" ry="15" fill="#4FA86C"></ellipse>
+<ellipse cx="431" cy="655" rx="28" ry="15" fill="#4FA86C"></ellipse>
+<circle cx="393" cy="508" r="143" fill="#7DD69B"></circle>
+<path d="M 424 396 Q 500 446 500 548" fill="none" stroke="#4FA86C" stroke-opacity="0.45" stroke-width="13" stroke-linecap="round"></path>
+<path d="M 392 612 Q 470 600 520 550" fill="none" stroke="#4FA86C" stroke-opacity="0.45" stroke-width="13" stroke-linecap="round"></path>
+<circle cx="462" cy="497" r="10" fill="#4FA86C" fill-opacity="0.45"></circle>
+<circle cx="490" cy="523" r="6" fill="#4FA86C" fill-opacity="0.45"></circle>
+<path d="M 256 530 Q 306 556 362 538" fill="none" stroke="#1D2125" stroke-width="6" stroke-linecap="round"></path>
+<circle cx="330" cy="465" r="48" fill="#A8E6BC" stroke="#4FA86C" stroke-width="6"></circle>
+<circle cx="313" cy="463" r="17" fill="#1D2125"></circle>
+<circle cx="306" cy="456" r="6" fill="#FFFFFF"></circle>
+</svg>
+<div style="width: 100%; max-width: 420px; margin-top: -8px; background: #1E2227; border: 1px solid #3A424A; border-radius: 16px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #DCE2E6">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<span style="font-weight: 700; color: #F2F5F7">Morning report, 07:30</span>
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: 999px; background: #4A3B10; color: #FFD966; font-size: 13px; font-weight: 700">Amber: take a look</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13.5px; line-height: 1.5">
+<span>New build since yesterday: 17:35 deploy</span>
+<span>126 tests: 125 passed, 1 failed</span>
+<span>API: 1 field missing on campaigns</span>
+<span>Cross-account access: no leaks</span>
+<span>QA Review: 4 waiting, 2 new</span>
+<span>14 writes, all to its own test data. Nothing left behind.</span>
+</div>
+<span style="font-size: 12.5px; color: #8A96A0">Example report</span>
+</div>
+</div>
+</section>
+</header>
+
+<section aria-labelledby="pain" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 80px; display: flex; flex-direction: column; gap: 40px">
+<h2 id="pain" style="margin: 0; max-width: 760px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.02; font-weight: 800; letter-spacing: -0.03em">You ship several times a day. Nobody checks what broke.</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 20px">
+<div style="background: #FFFFFF; border: 1px solid #DCD8CE; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 23px; line-height: 1.15; font-weight: 700">Tickets wait for a person</h3>
+<p style="margin: 0; color: #4A535B">Developers write manual QA steps, then the ticket sits in the review column until someone has time.</p>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DCD8CE; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 23px; line-height: 1.15; font-weight: 700">Yesterday's fix, today's bug</h3>
+<p style="margin: 0; color: #4A535B">Nobody re-tests last week's fixes after this morning's deploy, so regressions slip out quietly.</p>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DCD8CE; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 23px; line-height: 1.15; font-weight: 700">Bugs live in chat</h3>
+<p style="margin: 0; color: #4A535B">Things people notice end up in a thread or a doc, not on the board where work actually happens.</p>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DCD8CE; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 23px; line-height: 1.15; font-weight: 700">The boring checks never happen</h3>
+<p style="margin: 0; color: #4A535B">Did an API change shape? Did a page slow down? Can one customer see another's data? Does each plan still unlock what it promises?</p>
+</div>
+</div>
+</section>
+
+<section id="how" aria-labelledby="how-h" style="background: #FFFFFF; border-top: 1px solid #DCD8CE; border-bottom: 1px solid #DCD8CE">
+<div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<p style="margin: 0; font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2E6B44">How it works</p>
+<h2 id="how-h" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.02; font-weight: 800; letter-spacing: -0.03em">Here is our board. Here is our git. Here is our product.</h2>
+<p style="margin: 0; font-size: 20px; color: #4A535B">Three connections, then QAmeleon gets to work in three stages. Your developer sets it up alone, from the command line.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 24px">
+<div style="background: #F5F3EE; border-radius: 22px; padding: 32px; display: flex; flex-direction: column; gap: 14px">
+<span style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 999px; background: #7DD69B; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 22px">1</span>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.02em">Build</h3>
+<p style="margin: 0; color: #4A535B">QAmeleon signs in to your dev app, walks every page, records your API and proposes the checks. You approve a baseline, and the morning and deploy runs start.</p>
+</div>
+<div style="background: #F5F3EE; border-radius: 22px; padding: 32px; display: flex; flex-direction: column; gap: 14px">
+<span style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 999px; background: #7DD69B; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 22px">2</span>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.02em">Review</h3>
+<p style="margin: 0; color: #4A535B">It works through every ticket in your QA column, step by step, on the real dev app, and writes up what it saw: what passed, what failed, what it could not check and why.</p>
+</div>
+<div style="background: #F5F3EE; border-radius: 22px; padding: 32px; display: flex; flex-direction: column; gap: 14px">
+<span style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 999px; background: #7DD69B; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 22px">3</span>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.02em">Refine</h3>
+<p style="margin: 0; color: #4A535B">Every check that passes and can be automated joins the morning run. Every bug pattern it finds goes on its checklist. Coverage grows with each review.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="daily-h" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2E6B44">Every morning, and after every deploy</p>
+<h2 id="daily-h" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.02; font-weight: 800; letter-spacing: -0.03em">The checks nobody has time for, done before stand-up.</h2>
+<p style="margin: 0; font-size: 20px; color: #4A535B">A one-screen summary lands in your team chat. The full report goes on a ticket on your board. Green means nothing to do. Amber means something changed. Red means something broke, and which deploy did it.</p>
+</div>
+<ul style="flex: 1.3 1 480px; min-width: 0; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 16px">
+<li style="border-top: 3px solid #1E2227; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">User journeys</strong><span style="color: #4A535B">Every page reachable, and full create, edit and delete flows on throwaway data.</span></li>
+<li style="border-top: 3px solid #1E2227; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">API contract</strong><span style="color: #4A535B">New, missing or renamed fields on every endpoint, spotted the morning after.</span></li>
+<li style="border-top: 3px solid #1E2227; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Speed</strong><span style="color: #4A535B">Each endpoint against its own history. Two readings must agree before it calls a slowdown.</span></li>
+<li style="border-top: 3px solid #1E2227; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Who can see what</strong><span style="color: #4A535B">One customer account tries to read and edit another's records. Every day.</span></li>
+<li style="border-top: 3px solid #1E2227; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Plans and limits</strong><span style="color: #4A535B">Each pricing plan still unlocks what it promises, and upgrade prompts point the right way.</span></li>
+<li style="border-top: 3px solid #1E2227; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Pages and accessibility</strong><span style="color: #4A535B">Every page scanned, signed in and out, with only new issues flagged.</span></li>
+</ul>
+</section>
+
+<section aria-labelledby="colour-h" style="background: #2B3036; color: #F2F5F7">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 780px">
+<p style="margin: 0; font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #7DD69B">Fits any app. Sees every angle.</p>
+<h2 id="colour-h" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.02; font-weight: 800; letter-spacing: -0.03em">He changes colour with the result.</h2>
+<p style="margin: 0; font-size: 20px; color: #C5CDD3">The same three states in the morning report, the review message and on your board. His face changes too, so you can read it at a glance in any colour.</p>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 24px">
+<li style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<svg viewBox="140 280 560 500" style="width: 220px; max-width: 100%; height: auto" aria-hidden="true">
+<ellipse cx="395" cy="712" rx="125" ry="9" fill="#16191D" fill-opacity="0.7"></ellipse>
+<path d="M 340 374 L 370 348 L 396 374 Z" fill="#4FA86C"></path>
+<path d="M 394 374 L 420 348 L 448 374 Z" fill="#4FA86C"></path>
+<path d="M 468 588 Q 528 628 556 662 C 588 702 562 728 530 718 C 504 708 506 680 526 678" fill="none" stroke="#7DD69B" stroke-width="46" stroke-linecap="round"></path>
+<path d="M 538 690 q -8 4 -2 10" fill="none" stroke="#4FA86C" stroke-width="3" stroke-linecap="round"></path>
+<ellipse cx="361" cy="655" rx="28" ry="15" fill="#4FA86C"></ellipse>
+<ellipse cx="431" cy="655" rx="28" ry="15" fill="#4FA86C"></ellipse>
+<circle cx="393" cy="508" r="143" fill="#7DD69B"></circle>
+<path d="M 424 396 Q 500 446 500 548" fill="none" stroke="#4FA86C" stroke-opacity="0.45" stroke-width="13" stroke-linecap="round"></path>
+<path d="M 392 612 Q 470 600 520 550" fill="none" stroke="#4FA86C" stroke-opacity="0.45" stroke-width="13" stroke-linecap="round"></path>
+<circle cx="462" cy="497" r="10" fill="#4FA86C" fill-opacity="0.45"></circle>
+<circle cx="490" cy="523" r="6" fill="#4FA86C" fill-opacity="0.45"></circle>
+<path d="M 256 530 Q 306 556 362 538" fill="none" stroke="#1D2125" stroke-width="6" stroke-linecap="round"></path>
+<circle cx="330" cy="465" r="48" fill="#A8E6BC" stroke="#4FA86C" stroke-width="6"></circle>
+<circle cx="313" cy="463" r="17" fill="#1D2125"></circle>
+<circle cx="306" cy="456" r="6" fill="#FFFFFF"></circle>
+</svg>
+<strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 26px; color: #A8E6BC">All clear</strong>
+<span style="color: #C5CDD3">Every check passed. Nothing to do.</span>
+</li>
+<li style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<svg viewBox="140 280 560 500" style="width: 220px; max-width: 100%; height: auto" aria-hidden="true">
+<ellipse cx="395" cy="712" rx="125" ry="9" fill="#16191D" fill-opacity="0.7"></ellipse>
+<path d="M 340 374 L 370 348 L 396 374 Z" fill="#C98A14"></path>
+<path d="M 394 374 L 420 348 L 448 374 Z" fill="#C98A14"></path>
+<path d="M 468 588 Q 528 628 556 662 C 588 702 562 728 530 718 C 504 708 506 680 526 678" fill="none" stroke="#F5BE42" stroke-width="46" stroke-linecap="round"></path>
+<path d="M 538 690 q -8 4 -2 10" fill="none" stroke="#C98A14" stroke-width="3" stroke-linecap="round"></path>
+<ellipse cx="361" cy="655" rx="28" ry="15" fill="#C98A14"></ellipse>
+<ellipse cx="431" cy="655" rx="28" ry="15" fill="#C98A14"></ellipse>
+<circle cx="393" cy="508" r="143" fill="#F5BE42"></circle>
+<path d="M 424 396 Q 500 446 500 548" fill="none" stroke="#C98A14" stroke-opacity="0.45" stroke-width="13" stroke-linecap="round"></path>
+<path d="M 392 612 Q 470 600 520 550" fill="none" stroke="#C98A14" stroke-opacity="0.45" stroke-width="13" stroke-linecap="round"></path>
+<circle cx="462" cy="497" r="10" fill="#C98A14" fill-opacity="0.45"></circle>
+<circle cx="490" cy="523" r="6" fill="#C98A14" fill-opacity="0.45"></circle>
+<path d="M 270 540 L 366 540" fill="none" stroke="#1D2125" stroke-width="6" stroke-linecap="round"></path>
+<circle cx="330" cy="465" r="48" fill="#FFDD8A" stroke="#C98A14" stroke-width="6"></circle>
+<circle cx="318" cy="468" r="17" fill="#1D2125"></circle>
+<circle cx="311" cy="461" r="6" fill="#FFFFFF"></circle>
+</svg>
+<strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 26px; color: #FFDD8A">Needs a look</strong>
+<span style="color: #C5CDD3">Something changed, or a review is waiting for a person.</span>
+</li>
+<li style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<svg viewBox="140 280 560 500" style="width: 220px; max-width: 100%; height: auto" aria-hidden="true">
+<ellipse cx="395" cy="712" rx="125" ry="9" fill="#16191D" fill-opacity="0.7"></ellipse>
+<path d="M 340 374 L 370 348 L 396 374 Z" fill="#C2483C"></path>
+<path d="M 394 374 L 420 348 L 448 374 Z" fill="#C2483C"></path>
+<path d="M 468 588 Q 528 628 556 662 C 588 702 562 728 530 718 C 504 708 506 680 526 678" fill="none" stroke="#EF7B6B" stroke-width="46" stroke-linecap="round"></path>
+<path d="M 538 690 q -8 4 -2 10" fill="none" stroke="#C2483C" stroke-width="3" stroke-linecap="round"></path>
+<ellipse cx="361" cy="655" rx="28" ry="15" fill="#C2483C"></ellipse>
+<ellipse cx="431" cy="655" rx="28" ry="15" fill="#C2483C"></ellipse>
+<circle cx="393" cy="508" r="143" fill="#EF7B6B"></circle>
+<path d="M 424 396 Q 500 446 500 548" fill="none" stroke="#C2483C" stroke-opacity="0.45" stroke-width="13" stroke-linecap="round"></path>
+<path d="M 392 612 Q 470 600 520 550" fill="none" stroke="#C2483C" stroke-opacity="0.45" stroke-width="13" stroke-linecap="round"></path>
+<circle cx="462" cy="497" r="10" fill="#C2483C" fill-opacity="0.45"></circle>
+<circle cx="490" cy="523" r="6" fill="#C2483C" fill-opacity="0.45"></circle>
+<path d="M 272 550 Q 320 524 372 548" fill="none" stroke="#1D2125" stroke-width="6" stroke-linecap="round"></path>
+<circle cx="330" cy="465" r="48" fill="#F7ABA2" stroke="#C2483C" stroke-width="6"></circle>
+<circle cx="318" cy="468" r="17" fill="#1D2125"></circle>
+<circle cx="311" cy="461" r="6" fill="#FFFFFF"></circle>
+</svg>
+<strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 26px; color: #F7ABA2">Something failed</strong>
+<span style="color: #C5CDD3">A check or a step failed, and the bug is on your board.</span>
+</li>
+</ul>
+</div>
+</section>
+
+<section id="reviews" aria-labelledby="reviews-h" style="background: #2B3036; color: #F2F5F7; border-top: 1px solid #4A535B">
+<div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 800px">
+<p style="margin: 0; font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #7DD69B">Ticket reviews</p>
+<h2 id="reviews-h" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.02; font-weight: 800; letter-spacing: -0.03em">Your QA column, cleared. Every ticket judged five ways.</h2>
+<p style="margin: 0; font-size: 20px; color: #C5CDD3">QAmeleon reads the ticket and its comments, runs each "how to verify" step on dev, and looks at every surface the change touches.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 16px">
+<div style="background: #353B42; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 24px; font-weight: 800">UI</h3><p style="margin: 0; color: #C5CDD3; font-size: 16.5px">Does it look and read right in every state?</p></div>
+<div style="background: #353B42; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 24px; font-weight: 800">UX</h3><p style="margin: 0; color: #C5CDD3; font-size: 16.5px">Can people finish the task, recover from mistakes, and see where the gates are?</p></div>
+<div style="background: #353B42; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 24px; font-weight: 800">Regression</h3><p style="margin: 0; color: #C5CDD3; font-size: 16.5px">Does everything next to the change still work?</p></div>
+<div style="background: #7DD69B; color: #1E2227; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 24px; font-weight: 800">Old Man Testing</h3><p style="margin: 0; font-size: 16.5px">Would a busy, non-technical customer understand it, trust it, and not get stuck?</p></div>
+<div style="background: #353B42; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 24px; font-weight: 800">Automation</h3><p style="margin: 0; color: #C5CDD3; font-size: 16.5px">What can be checked every morning from now on, and what needs a person?</p></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 32px; border-top: 1px solid #4A535B; padding-top: 40px">
+<div style="display: flex; flex-direction: column; gap: 8px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">The review goes on the ticket</strong><span style="color: #C5CDD3">One comment: summary, the five lenses, and a table of every step with what it saw.</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Each finding becomes a ticket</strong><span style="color: #C5CDD3">Steps to reproduce, expected, actual, and how to verify, in a triage column. Never twice.</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Real passes move on</strong><span style="color: #C5CDD3">Only when every step passed and nothing was blocked. Only forward, never back.</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Fixes get re-tested</strong><span style="color: #C5CDD3">When a fix comes back, QAmeleon re-runs its own verify steps. A pass joins the morning run.</span></div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="proof-h" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<p style="margin: 0; font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2E6B44">Week one on a live startup</p>
+<h2 id="proof-h" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.02; font-weight: 800; letter-spacing: -0.03em">Built inside a real two-sided marketplace, with one part-time QA person.</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 20px">
+<div style="background: #FFFFFF; border: 1px solid #DCD8CE; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 64px; line-height: 1; font-weight: 800; letter-spacing: -0.04em">13 of 13</span><span style="color: #4A535B">findings from the first review batch accepted by the dev lead. None rejected, none duplicates.</span></div>
+<div style="background: #FFFFFF; border: 1px solid #DCD8CE; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 64px; line-height: 1; font-weight: 800; letter-spacing: -0.04em">46 to 126</span><span style="color: #4A535B">morning tests in five days, 21 of them written by the reviews themselves.</span></div>
+<div style="background: #FFFFFF; border: 1px solid #DCD8CE; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 64px; line-height: 1; font-weight: 800; letter-spacing: -0.04em">18</span><span style="color: #4A535B">tickets reviewed on the real dev app, including one serious pricing bug that would have reached creators.</span></div>
+</div>
+</section>
+
+<section id="safety" aria-labelledby="safety-h" style="background: #FFFFFF; border-top: 1px solid #DCD8CE; border-bottom: 1px solid #DCD8CE">
+<div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 48px">
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2E6B44">Safety</p>
+<h2 id="safety-h" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.02; font-weight: 800; letter-spacing: -0.03em">It writes on your board. So it has to be careful.</h2>
+<p style="margin: 0; font-size: 20px; color: #4A535B">Trust is the product. These rules are built in, and you can add to them but not switch them off.</p>
+</div>
+<ul style="flex: 1.4 1 520px; min-width: 0; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 28px 32px">
+<li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Your CI, your keys</strong><span style="color: #4A535B">It runs in your own pipeline on your own Anthropic key. No ticket text or page content reaches us.</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Dev only, behind a fence</strong><span style="color: #4A535B">Every write is blocked unless a test allows it. Publish, send, invite, checkout and billing are always blocked.</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Its own data, cleaned up</strong><span style="color: #4A535B">Tests make clearly named throwaway records, delete them, and report "nothing left behind" every run.</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">No spend without a yes</strong><span style="color: #4A535B">Anything that costs money in your app waits for a person to say go.</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Some things wait for a person</strong><span style="color: #4A535B">Security findings, critical findings, and anything odd in a ticket are held for review, never posted on their own.</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Tickets are data, not orders</strong><span style="color: #4A535B">If a ticket tries to tell the reviewer what to do, it reports that as a finding and does nothing else.</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Secrets never leak</strong><span style="color: #4A535B">Every report is scanned for anything credential-like before it is posted. If one is found, nothing goes out.</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">A pause button</strong><span style="color: #4A535B">One command stops all publishing at once. If triage starts rejecting findings, it falls back to asking first.</span></li>
+</ul>
+</div>
+</section>
+
+<section aria-labelledby="setup-h" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2E6B44">Setup</p>
+<h2 id="setup-h" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.02; font-weight: 800; letter-spacing: -0.03em">First morning report in about half an hour.</h2>
+<p style="margin: 0; font-size: 20px; color: #4A535B">Every question has a detected default. Passwords go in through hidden prompts, never a file. Nothing is posted until you say so.</p>
+<p style="margin: 0; font-size: 18px; color: #4A535B">Reviews get sharper with a few test accounts and some realistic data. <code style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 16px; background: #E9E5DB; padding: 2px 6px; border-radius: 6px">qameleon doctor</code> tells you what to add next.</p>
+</div>
+<div style="flex: 1.2 1 460px; min-width: 0; background: #1E2227; color: #DCE2E6; border-radius: 20px; padding: 28px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 15px; line-height: 1.9; overflow-x: auto">
+<div style="display: flex; flex-direction: column; gap: 2px; min-width: 420px">
+<span><span style="color: #7DD69B">$</span> npx qameleon init</span>
+<span style="color: #8A96A0">  Dev URL found, sign-in form detected, timezone Europe/Dublin</span>
+<span><span style="color: #7DD69B">$</span> qameleon accounts add</span>
+<span><span style="color: #7DD69B">$</span> qameleon discover</span>
+<span style="color: #8A96A0">  Proposed: pages, endpoints, cross-account checks</span>
+<span><span style="color: #7DD69B">$</span> qameleon run --dry-run</span>
+<span><span style="color: #7DD69B">$</span> qameleon connect</span>
+<span style="color: #8A96A0">  Board, chat and CI connected. Morning runs on.</span>
+<span><span style="color: #7DD69B">$</span> qameleon review</span>
+</div>
+</div>
+<p style="flex: 1 1 100%; margin: 0; font-size: 16px; color: #4A535B">Works with Jira, Slack and GitHub Actions today. More boards are on the way.</p>
+</section>
+
+<section id="pricing" aria-labelledby="pricing-h" style="background: #2B3036; color: #F2F5F7">
+<div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 16px; max-width: 780px">
+<p style="margin: 0; font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #7DD69B">Early access</p>
+<h2 id="pricing-h" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.02; font-weight: 800; letter-spacing: -0.03em">We're taking on our first teams.</h2>
+<p style="margin: 0; font-size: 20px; color: #C5CDD3">Pricing is being set with our early users. Join the list and we'll get in touch about your board, your app and what you'd like checked.</p>
+</div>
+</section>
+
+<section id="start" aria-labelledby="start-h" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 88px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px">
+<div style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<h2 id="start-h" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(38px, 5vw, 64px); line-height: 1; font-weight: 800; letter-spacing: -0.035em">Let QAmeleon take tomorrow's 07:30.</h2>
+<p style="margin: 0; font-size: 20px; color: #4A535B">Leave your email and we'll be in touch about getting QAmeleon onto your board.</p>
+<form name="early-access" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company-website" style="display: flex; flex-wrap: wrap; gap: 14px; padding-top: 8px; align-items: flex-end">
+<input type="hidden" name="form-name" value="early-access">
+<p hidden><label>Leave this empty <input name="company-website"></label></p>
+<label style="display: flex; flex-direction: column; gap: 6px; flex: 1 1 280px; font-weight: 700; font-size: 16px">Work email
+<input type="email" name="email" required autocomplete="email" style="min-height: 52px; padding: 0 18px; border-radius: 999px; border: 2px solid #1E2227; background: #FFFFFF; color: #1E2227; font: inherit; font-weight: 400; font-size: 18px"></label>
+<button type="submit" style="min-height: 52px; padding: 0 28px; border-radius: 999px; border: 0; background: #1E2227; color: #F2F5F7; font: inherit; font-weight: 700; font-size: 18px; cursor: pointer">Get early access</button>
+</form>
+</div>
+<svg viewBox="140 280 560 500" style="flex: 0 0 auto; width: 220px; height: auto" aria-hidden="true">
+<ellipse cx="395" cy="712" rx="125" ry="9" fill="#1E2227" fill-opacity="0.18"></ellipse>
+<path d="M 340 374 L 370 348 L 396 374 Z" fill="#4FA86C"></path>
+<path d="M 394 374 L 420 348 L 448 374 Z" fill="#4FA86C"></path>
+<path d="M 468 588 Q 528 628 556 662 C 588 702 562 728 530 718 C 504 708 506 680 526 678" fill="none" stroke="#7DD69B" stroke-width="46" stroke-linecap="round"></path>
+<path d="M 538 690 q -8 4 -2 10" fill="none" stroke="#4FA86C" stroke-width="3" stroke-linecap="round"></path>
+<ellipse cx="361" cy="655" rx="28" ry="15" fill="#4FA86C"></ellipse>
+<ellipse cx="431" cy="655" rx="28" ry="15" fill="#4FA86C"></ellipse>
+<circle cx="393" cy="508" r="143" fill="#7DD69B"></circle>
+<path d="M 424 396 Q 500 446 500 548" fill="none" stroke="#4FA86C" stroke-opacity="0.45" stroke-width="13" stroke-linecap="round"></path>
+<path d="M 392 612 Q 470 600 520 550" fill="none" stroke="#4FA86C" stroke-opacity="0.45" stroke-width="13" stroke-linecap="round"></path>
+<circle cx="462" cy="497" r="10" fill="#4FA86C" fill-opacity="0.45"></circle>
+<circle cx="490" cy="523" r="6" fill="#4FA86C" fill-opacity="0.45"></circle>
+<path d="M 252 524 Q 304 586 368 534" fill="none" stroke="#1D2125" stroke-width="7" stroke-linecap="round"></path>
+<circle cx="330" cy="465" r="48" fill="#A8E6BC" stroke="#4FA86C" stroke-width="6"></circle>
+<circle cx="326" cy="448" r="17" fill="#1D2125"></circle>
+<circle cx="319" cy="441" r="6" fill="#FFFFFF"></circle>
+<path d="M 600 360 v 32 M 584 376 h 32" stroke="#4FA86C" stroke-width="7" stroke-linecap="round"></path>
+<path d="M 230 340 v 24 M 218 352 h 24" stroke="#4FA86C" stroke-width="6" stroke-linecap="round"></path>
+<path d="M 560 310 v 18 M 551 319 h 18" stroke="#4FA86C" stroke-width="5" stroke-linecap="round"></path>
+</svg>
+</section>
+
+<footer style="border-top: 1px solid #DCD8CE">
+<div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px 48px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 15px; color: #4A535B">
+<span>© 2026 QAmeleon</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 24px">
+<a href="/docs/">Docs</a>
+</div>
+</div>
+</footer>
+
+</div>
+</body>
+</html>
