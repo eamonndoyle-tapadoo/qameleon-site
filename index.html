@@ -352,7 +352,7 @@ footer a{display:inline-block;padding-block:3px}a:hover{color:#4A535B}
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 32px; border-top: 1px solid #4A535B; padding-top: 40px">
 <div style="display: flex; flex-direction: column; gap: 8px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">The review goes on the ticket</strong><span style="color: #C5CDD3">One comment: summary, the five lenses, and a table of every step with what it saw.</span></div>
 <div style="display: flex; flex-direction: column; gap: 8px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Each bug becomes a ticket</strong><span style="color: #C5CDD3">Steps to reproduce, expected, actual, and how to verify, in a triage column. Minor notes are grouped on one polish ticket. Never twice.</span></div>
-<div style="display: flex; flex-direction: column; gap: 8px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Real passes move on</strong><span style="color: #C5CDD3">Only when every step passed and nothing was blocked. Only forward, never back.</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Every ticket lands in the right place</strong><span style="color: #C5CDD3">A ticket moves on only when every step passed. One whose steps failed goes back to your findings column, with its bugs linked.</span></div>
 <div style="display: flex; flex-direction: column; gap: 8px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Fixes get re-tested</strong><span style="color: #C5CDD3">When a fix comes back, QAmeleon re-runs its own verify steps, and a pass moves the ticket on.</span></div>
 </div>
 </div>
@@ -399,7 +399,7 @@ footer a{display:inline-block;padding-block:3px}a:hover{color:#4A535B}
 </div>
 <div style="flex: 1.2 1 460px; min-width: 0; background: #1E2227; color: #DCE2E6; border-radius: 20px; padding: 28px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 15px; line-height: 1.9; overflow-x: auto">
 <div style="display: flex; flex-direction: column; gap: 2px">
-<span><span style="color: #7DD69B">$</span> npx qameleon setup</span>
+<span><span style="color: #7DD69B">$</span> qameleon setup</span>
 <span style="color: #8A96A0; padding-left: 2ch">QAmeleon setup is open in your browser</span>
 <span style="color: #7DD69B; padding-top: 10px">Connect</span>
 <span style="padding-left: 2ch">1 Git, 2 Product, 3 Accounts, 4 Board</span>
@@ -411,7 +411,7 @@ footer a{display:inline-block;padding-block:3px}a:hover{color:#4A535B}
 <span style="color: #8A96A0; padding-left: 2ch">Board, chat and CI connected. Morning runs on.</span>
 </div>
 </div>
-<p style="flex: 1 1 100%; margin: 0; font-size: 16px; color: #4A535B">Works with Jira, Trello or Notion boards, reports to Slack, Microsoft Teams, email, Datadog or any webhook, and runs its checks in GitHub Actions.</p>
+<p style="flex: 1 1 100%; margin: 0; font-size: 16px; color: #4A535B">Works with Jira, Trello or Notion boards, reports to Slack, Microsoft Teams, email, Datadog or any webhook, and runs its checks in GitHub Actions. During early access, your invite email has your install command.</p>
 </section>
 
 <section id="pricing" aria-labelledby="pricing-h" style="background: #2B3036; color: #F2F5F7">

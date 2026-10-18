@@ -168,6 +168,7 @@ footer a{display:inline-block;padding-block:3px}
 <tbody>
 <tr><td><strong>Node.js 22 or newer</strong></td><td>QAmeleon runs on Node, on your machine for setup and in CI after.</td></tr>
 <tr><td><strong>The GitHub CLI, signed in</strong></td><td>Install it from <a href="https://cli.github.com">cli.github.com</a> and run <code>gh auth login</code>. Setup uses your login to open a pull request and save secrets. You need admin access to the repository, so setup can save its secrets.</td></tr>
+<tr><td><strong>Your QAmeleon access key</strong></td><td>It is in your invite email. You install QAmeleon with it, and setup saves it to your repository so your CI can fetch QAmeleon each morning.</td></tr>
 <tr><td><strong>A browser for QAmeleon</strong></td><td>Run <code>npx playwright install chromium</code> once. Setup uses it to sign in and run the first dry run.</td></tr>
 <tr><td><strong>Claude Code</strong></td><td>Run <code>npm install -g @anthropic-ai/claude-code</code>. Reviews you start from setup or the console run on your machine with it.</td></tr>
 <tr><td><strong>A repository on GitHub with Actions</strong></td><td>QAmeleon adds one workflow and runs there. GitLab is coming soon.</td></tr>
@@ -184,13 +185,14 @@ footer a{display:inline-block;padding-block:3px}
 <p class="kick">Getting started</p>
 <h2>Open setup</h2>
 <ol class="steps">
-<li>Open a terminal in any folder and run:
-<div class="term"><b>$</b> npx qameleon setup</div></li>
+<li>Install QAmeleon with the command in your invite email. It uses your access key, so keep it to yourself.</li>
+<li>Open a terminal in your app's repository folder and run:
+<div class="term"><b>$</b> qameleon setup</div></li>
 <li>Your browser opens the setup page. It is served from your own machine only, with a one-time key, so nobody else can reach it.</li>
 <li>Keep the terminal open beside it. When setup needs a password or token, an amber box says <span class="ui">Your turn, in the terminal</span>. Type it there, not in the browser.</li>
 </ol>
 <p>The page has three parts: the steps on the left (Connect, Build, Loop), the current step in the middle, and QAmeleon on the right, who tells you what is happening and changes mood as it goes. A step unlocks once the one before it is done, and you can go back to any finished step from the left.</p>
-<div class="tip"><strong>Prefer the terminal?</strong><p>Every setup step has a command too. Run <code>npx qameleon help</code> for the list, or see <a href="#cli">Command line</a>.</p></div>
+<div class="tip"><strong>Prefer the terminal?</strong><p>Every setup step has a command too. Run <code>qameleon help</code> for the list, or see <a href="#cli">Command line</a>.</p></div>
 </section>
 
 <section id="setup-welcome">
@@ -281,8 +283,8 @@ footer a{display:inline-block;padding-block:3px}
 <thead><tr><th scope="col">Field</th><th scope="col">Pick</th></tr></thead>
 <tbody>
 <tr><td><span class="ui">Tickets wait for QA in</span></td><td>The column developers move tickets to when they are ready for testing, for example "Ready for QA".</td></tr>
-<tr><td><span class="ui">Put findings in</span></td><td>A triage column for the bugs QAmeleon raises, for example "QAmeleon found".</td></tr>
-<tr><td><span class="ui">Move verified passes to</span></td><td>Where a ticket goes when every step passed, for example "Passed QA". QAmeleon only moves a ticket from the review column to this one, and only when every step passed. It never moves a ticket back.</td></tr>
+<tr><td><span class="ui">Put findings in</span></td><td>A triage column for the bugs QAmeleon raises, for example "QAmeleon found". A ticket whose own steps failed comes back here too, with its bugs linked, so a developer picks it up.</td></tr>
+<tr><td><span class="ui">Move verified passes to</span></td><td>Where a ticket goes when every step passed, for example "Passed QA". QAmeleon only moves a ticket from the review column to this one, and only when every step passed.</td></tr>
 </tbody>
 </table></div>
 <ol class="steps"><li>Press <span class="ui">Continue</span>. The token is saved to your GitHub secrets.</li></ol>
@@ -321,7 +323,7 @@ footer a{display:inline-block;padding-block:3px}
 </ol>
 <h3>Merge, then open your console</h3>
 <ol class="steps">
-<li>Press <span class="ui">Merge pull request</span>. This adds the workflow and your settings to your main branch, which switches on the morning check. Nothing else in your code changes.</li>
+<li>Press <span class="ui">Merge pull request</span>. If your repository does not have your QAmeleon access key yet, the terminal asks for it first, checks it and saves it as a secret. Merging adds the workflow and your settings to your main branch, which switches on the morning check. Nothing else in your code changes.</li>
 <li>Rather merge it yourself on GitHub? Do that, then press <span class="ui">I've merged it, check again</span>.</li>
 <li>Press <span class="ui">Open your console</span>. Setup is done.</li>
 </ol>
@@ -558,7 +560,7 @@ footer a{display:inline-block;padding-block:3px}
 </table></div>
 <p>QAmeleon sets the severity from what the problem does to the customer, so the same problem gets the same severity on every ticket. A bug an earlier review rated keeps that rating. A review that would change it waits for a person.</p>
 <h3>Step results in a review</h3>
-<p>Each "How to verify manually" step is marked <strong>pass</strong>, <strong>fail</strong>, <strong>blocked</strong> (it says exactly what would unblock it, often a test account or some data) or <strong>Needs a person</strong> (it needs access QAmeleon does not have, such as a test card or cloud logs). A ticket moves on only when every step passed.</p>
+<p>Each "How to verify manually" step is marked <strong>pass</strong>, <strong>fail</strong>, <strong>blocked</strong> (it says exactly what would unblock it, often a test account or some data) or <strong>Needs a person</strong> (it needs access QAmeleon does not have, such as a test card or cloud logs). A ticket moves on only when every step passed. If any step failed, it goes back to your findings column. If steps were only blocked, it stays where it is until they can be checked.</p>
 </section>
 
 <section id="guards">
@@ -591,7 +593,7 @@ footer a{display:inline-block;padding-block:3px}
 <li>Pay, publish, send, invite or check out in your app. Those writes are always blocked.</li>
 <li>Write to a look-only account, or delete anything it did not create.</li>
 <li>Follow instructions written in a ticket.</li>
-<li>Move a ticket backwards.</li>
+<li>Move a ticket out of a column it was not reviewing, or into one you did not pick.</li>
 <li>Post a report with anything that looks like a password or token in it. If one is found, nothing goes out.</li>
 </ul>
 </section>
