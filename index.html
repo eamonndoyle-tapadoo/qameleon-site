@@ -79,7 +79,7 @@ footer a{display:inline-block;padding-block:3px}a:hover{color:#4A535B}
 <div style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
 <p style="margin: 0; font-size: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #7DD69B">AI QA for startups without a QA team</p>
 <h1 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(48px, 7vw, 92px); line-height: 0.95; font-weight: 800; letter-spacing: -0.035em; text-wrap: balance">Your QA engineer starts at 07:30.</h1>
-<p style="margin: 0; max-width: 560px; font-size: 21px; line-height: 1.5; color: #C5CDD3">QAmeleon checks your app every morning and after every deploy, reviews the tickets waiting for QA, and raises what it finds on your board with steps to reproduce. It runs in your own CI, on your own keys.</p>
+<p style="margin: 0; max-width: 560px; font-size: 21px; line-height: 1.5; color: #C5CDD3">QAmeleon checks your app every weekday morning and after every deploy, reviews the tickets waiting for QA when you ask, and raises what it finds on your board with steps to reproduce. It all runs on your own setup and your own keys.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 14px; padding-top: 8px">
 <a href="#start" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; background: #7DD69B; color: #1E2227; text-decoration: none; font-weight: 700; font-size: 18px">Get early access</a>
 <a href="#how" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; border: 2px solid #5A646D; color: #F2F5F7; text-decoration: none; font-weight: 700; font-size: 18px">See how it works</a>
@@ -129,8 +129,8 @@ footer a{display:inline-block;padding-block:3px}a:hover{color:#4A535B}
 </div>
 <div style="display: flex; flex-direction: column; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13.5px; line-height: 1.5">
 <span>New build since yesterday: 17:35 deploy</span>
-<span>126 tests: 125 passed, 1 failed</span>
-<span>API: 1 field missing on campaigns</span>
+<span>126 tests passed, 1 only on a retry</span>
+<span>API: 2 new fields on campaigns</span>
 <span>Cross-account access: no leaks</span>
 <span>QA Review: 4 waiting, 2 new</span>
 <span>14 writes, all to its own test data. Nothing left behind.</span>
@@ -168,7 +168,7 @@ footer a{display:inline-block;padding-block:3px}a:hover{color:#4A535B}
 <div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
 <p style="margin: 0; font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2E6B44">How it works</p>
 <h2 id="how-h" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.02; font-weight: 800; letter-spacing: -0.03em">Here is our board. Here is our git. Here is our product.</h2>
-<p style="margin: 0; font-size: 20px; color: #4A535B">Three connections, then QAmeleon gets to work in three stages. Your developer sets it up alone, on one guided setup page.</p>
+<p style="margin: 0; font-size: 20px; color: #4A535B">Four connections, then QAmeleon gets to work in three stages. Your developer sets it up alone, on one guided setup page.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 24px">
 <div style="background: #F5F3EE; border-radius: 22px; padding: 32px; display: flex; flex-direction: column; gap: 14px">
@@ -184,7 +184,7 @@ footer a{display:inline-block;padding-block:3px}a:hover{color:#4A535B}
 <div style="background: #F5F3EE; border-radius: 22px; padding: 32px; display: flex; flex-direction: column; gap: 14px">
 <span style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 999px; background: #7DD69B; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 22px">3</span>
 <h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.02em">Refine</h3>
-<p style="margin: 0; color: #4A535B">Every check that passes and can be automated joins the morning run. Every bug pattern it finds goes on its checklist. Coverage grows with each review.</p>
+<p style="margin: 0; color: #4A535B">Every check that could run daily is added to a list of proposed tests. Coverage grows as you add them. Coverage grows with each review.</p>
 </div>
 </div>
 </div>
@@ -198,10 +198,10 @@ footer a{display:inline-block;padding-block:3px}a:hover{color:#4A535B}
 </div>
 <ul style="flex: 1.3 1 480px; min-width: 0; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 16px">
 <li style="border-top: 3px solid #1E2227; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">User journeys</strong><span style="color: #4A535B">Every page reachable, and full create, edit and delete flows on throwaway data.</span></li>
-<li style="border-top: 3px solid #1E2227; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">API contract</strong><span style="color: #4A535B">New, missing or renamed fields on every endpoint, spotted the morning after.</span></li>
+<li style="border-top: 3px solid #1E2227; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">API contract</strong><span style="color: #4A535B">New fields and added or removed endpoints, spotted the morning after.</span></li>
 <li style="border-top: 3px solid #1E2227; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Speed</strong><span style="color: #4A535B">Each endpoint against its own history. Two readings must agree before it calls a slowdown.</span></li>
-<li style="border-top: 3px solid #1E2227; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Who can see what</strong><span style="color: #4A535B">One customer account tries to read and edit another's records. Every day.</span></li>
-<li style="border-top: 3px solid #1E2227; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Plans and limits</strong><span style="color: #4A535B">Each pricing plan still unlocks what it promises, and upgrade prompts point the right way.</span></li>
+<li style="border-top: 3px solid #1E2227; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Who can see what</strong><span style="color: #4A535B">One customer account tries to read another's records. Every day.</span></li>
+<li style="border-top: 3px solid #1E2227; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Plans and limits</strong><span style="color: #4A535B">Write a journey once per plan, and it checks each plan still unlocks what it promises.</span></li>
 <li style="border-top: 3px solid #1E2227; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Pages and accessibility</strong><span style="color: #4A535B">Every page scanned, signed in and out, with only new issues flagged.</span></li>
 </ul>
 </section>
@@ -329,7 +329,7 @@ footer a{display:inline-block;padding-block:3px}a:hover{color:#4A535B}
 </svg>
 
 <strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 26px; color: #F7ABA2">Something failed</strong>
-<span style="color: #C5CDD3">A check or a step failed, and the bug is on your board.</span>
+<span style="color: #C5CDD3">A check or a step failed. The report, or the bug, is on your board.</span>
 </li>
 </ul>
 </div>
@@ -351,9 +351,9 @@ footer a{display:inline-block;padding-block:3px}a:hover{color:#4A535B}
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 32px; border-top: 1px solid #4A535B; padding-top: 40px">
 <div style="display: flex; flex-direction: column; gap: 8px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">The review goes on the ticket</strong><span style="color: #C5CDD3">One comment: summary, the five lenses, and a table of every step with what it saw.</span></div>
-<div style="display: flex; flex-direction: column; gap: 8px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Each finding becomes a ticket</strong><span style="color: #C5CDD3">Steps to reproduce, expected, actual, and how to verify, in a triage column. Never twice.</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Each bug becomes a ticket</strong><span style="color: #C5CDD3">Steps to reproduce, expected, actual, and how to verify, in a triage column. Minor notes are grouped on one polish ticket. Never twice.</span></div>
 <div style="display: flex; flex-direction: column; gap: 8px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Real passes move on</strong><span style="color: #C5CDD3">Only when every step passed and nothing was blocked. Only forward, never back.</span></div>
-<div style="display: flex; flex-direction: column; gap: 8px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Fixes get re-tested</strong><span style="color: #C5CDD3">When a fix comes back, QAmeleon re-runs its own verify steps. A pass joins the morning run.</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Fixes get re-tested</strong><span style="color: #C5CDD3">When a fix comes back, QAmeleon re-runs its own verify steps, and a pass moves the ticket on.</span></div>
 </div>
 </div>
 </section>
@@ -378,12 +378,12 @@ footer a{display:inline-block;padding-block:3px}a:hover{color:#4A535B}
 <p style="margin: 0; font-size: 20px; color: #4A535B">Trust is the product. These rules are built in, and you can add to them but not switch them off.</p>
 </div>
 <ul style="flex: 1.4 1 520px; min-width: 0; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 28px 32px">
-<li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Your CI, your keys</strong><span style="color: #4A535B">It runs in your own pipeline on your own Anthropic key. No ticket text or page content reaches us.</span></li>
-<li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Dev only, behind a fence</strong><span style="color: #4A535B">Every write is blocked unless a test allows it. Publish, send, invite, checkout and billing are always blocked.</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Your CI, your keys</strong><span style="color: #4A535B">Checks run in your own pipeline and reviews on your own machine, both on your own Anthropic key. No ticket text or page content reaches us.</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Dev only, behind a fence</strong><span style="color: #4A535B">Every write is blocked unless a test allows it, and your own test suites keep their own rules. Publish, send, invite, checkout and billing are always blocked.</span></li>
 <li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Its own data, cleaned up</strong><span style="color: #4A535B">Tests make clearly named throwaway records, delete them, and report "nothing left behind" every run.</span></li>
 <li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">No spend without a yes</strong><span style="color: #4A535B">Anything that costs money in your app waits for a person to say go.</span></li>
 <li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Some things wait for a person</strong><span style="color: #4A535B">Security findings, critical findings, and anything odd in a ticket are held for review, never posted on their own.</span></li>
-<li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Tickets are data, not orders</strong><span style="color: #4A535B">If a ticket tries to tell the reviewer what to do, it reports that as a finding and does nothing else.</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Tickets are data, not orders</strong><span style="color: #4A535B">If a ticket tries to tell the reviewer what to do, no review starts. A person sees the flagged lines and decides.</span></li>
 <li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">Secrets never leak</strong><span style="color: #4A535B">Every report is scanned for anything credential-like before it is posted. If one is found, nothing goes out.</span></li>
 <li style="display: flex; flex-direction: column; gap: 6px"><strong style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 21px">A pause button</strong><span style="color: #4A535B">One command stops all publishing at once. If triage starts rejecting findings, it falls back to asking first.</span></li>
 </ul>
@@ -393,7 +393,7 @@ footer a{display:inline-block;padding-block:3px}a:hover{color:#4A535B}
 <section aria-labelledby="setup-h" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
 <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
 <p style="margin: 0; font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2E6B44">Setup</p>
-<h2 id="setup-h" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.02; font-weight: 800; letter-spacing: -0.03em">First morning report in about half an hour.</h2>
+<h2 id="setup-h" style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.02; font-weight: 800; letter-spacing: -0.03em">Set up in about ten minutes. Your first report in under half an hour.</h2>
 <p style="margin: 0; font-size: 20px; color: #4A535B">Every question has a detected default. Passwords go in through hidden prompts, never a file. Nothing is posted until you say so.</p>
 <p style="margin: 0; font-size: 18px; color: #4A535B">Reviews get sharper with a few test accounts and some realistic data. <code style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 16px; background: #E9E5DB; padding: 2px 6px; border-radius: 6px">qameleon doctor</code> tells you what to add next.</p>
 </div>
@@ -411,7 +411,7 @@ footer a{display:inline-block;padding-block:3px}a:hover{color:#4A535B}
 <span style="color: #8A96A0; padding-left: 2ch">Board, chat and CI connected. Morning runs on.</span>
 </div>
 </div>
-<p style="flex: 1 1 100%; margin: 0; font-size: 16px; color: #4A535B">Works with Jira, Trello or Notion boards, reports to Slack, Microsoft Teams, email or Datadog, and runs in GitHub Actions.</p>
+<p style="flex: 1 1 100%; margin: 0; font-size: 16px; color: #4A535B">Works with Jira, Trello or Notion boards, reports to Slack, Microsoft Teams, email, Datadog or any webhook, and runs its checks in GitHub Actions.</p>
 </section>
 
 <section id="pricing" aria-labelledby="pricing-h" style="background: #2B3036; color: #F2F5F7">

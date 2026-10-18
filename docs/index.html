@@ -156,7 +156,7 @@ footer a{display:inline-block;padding-block:3px}
 <div class="card"><strong>Findings on your board</strong><p>Each real bug becomes its own ticket with steps to reproduce, expected, actual and how to verify. Never raised twice.</p></div>
 <div class="card"><strong>Guards</strong><p>Security findings, critical findings and anything odd in a ticket wait for a person. A pause button stops all publishing at once.</p></div>
 </div>
-<p>It runs on your GitHub Actions and your own Anthropic key. Your code, tickets and pages never reach us.</p>
+<p>The morning and deploy checks run on your GitHub Actions. Reviews you start run on your machine. Both use your own Anthropic key, and your code, tickets and pages never reach us.</p>
 </section>
 
 <section id="before">
@@ -167,7 +167,9 @@ footer a{display:inline-block;padding-block:3px}
 <thead><tr><th scope="col">You need</th><th scope="col">Why</th></tr></thead>
 <tbody>
 <tr><td><strong>Node.js 22 or newer</strong></td><td>QAmeleon runs on Node, on your machine for setup and in CI after.</td></tr>
-<tr><td><strong>The GitHub CLI, signed in</strong></td><td>Install it from <a href="https://cli.github.com">cli.github.com</a> and run <code>gh auth login</code>. Setup uses your login to open a pull request and save secrets. You need write access to the repository.</td></tr>
+<tr><td><strong>The GitHub CLI, signed in</strong></td><td>Install it from <a href="https://cli.github.com">cli.github.com</a> and run <code>gh auth login</code>. Setup uses your login to open a pull request and save secrets. You need admin access to the repository, so setup can save its secrets.</td></tr>
+<tr><td><strong>A browser for QAmeleon</strong></td><td>Run <code>npx playwright install chromium</code> once. Setup uses it to sign in and run the first dry run.</td></tr>
+<tr><td><strong>Claude Code</strong></td><td>Run <code>npm install -g @anthropic-ai/claude-code</code>. Reviews you start from setup or the console run on your machine with it.</td></tr>
 <tr><td><strong>A repository on GitHub with Actions</strong></td><td>QAmeleon adds one workflow and runs there. GitLab is coming soon.</td></tr>
 <tr><td><strong>Your dev app, running</strong></td><td>The address of a dev or test environment. Never production.</td></tr>
 <tr><td><strong>Two test accounts in different customers</strong></td><td>So it can prove one customer cannot see another's data. A third, borrowed account with real data is optional and stays look only.</td></tr>
@@ -266,17 +268,25 @@ footer a{display:inline-block;padding-block:3px}
 <li>Give a <span class="ui">Short key for cards</span>, for example <code>APP</code>. Cards are then named APP-12, from their number on the board.</li>
 <li>Press <span class="ui">Load columns</span>. In the terminal, type your Trello API key and then your token. Both come from <a href="https://trello.com/power-ups/admin">trello.com/power-ups/admin</a>, under your Power-Up's API key.</li>
 </ol>
+<h3>Notion</h3>
+<ol class="steps">
+<li>Choose <span class="ui">Notion</span>.</li>
+<li>In Notion, open the database, choose ••• then Connections, and add your QAmeleon integration. Then paste the <span class="ui">Notion database address</span>.</li>
+<li>Leave <span class="ui">Short key for tickets</span> empty to use the prefix of the database's Unique ID property, or type one, for example <code>APP</code>.</li>
+<li>Press <span class="ui">Load columns</span>. In the terminal, type the integration secret from notion.so/my-integrations.</li>
+</ol>
+<p>The database needs a Status property, whose options become the columns, and a Unique ID property, which names the tickets.</p>
 <h3>Pick the three columns</h3>
 <div class="tw"><table>
 <thead><tr><th scope="col">Field</th><th scope="col">Pick</th></tr></thead>
 <tbody>
 <tr><td><span class="ui">Tickets wait for QA in</span></td><td>The column developers move tickets to when they are ready for testing, for example "Ready for QA".</td></tr>
 <tr><td><span class="ui">Put findings in</span></td><td>A triage column for the bugs QAmeleon raises, for example "QAmeleon found".</td></tr>
-<tr><td><span class="ui">Move verified passes to</span></td><td>Where a ticket goes when every step passed, for example "Passed QA". QAmeleon only ever moves tickets forward from the review column, never back, and never to Done.</td></tr>
+<tr><td><span class="ui">Move verified passes to</span></td><td>Where a ticket goes when every step passed, for example "Passed QA". QAmeleon only moves a ticket from the review column to this one, and only when every step passed. It never moves a ticket back.</td></tr>
 </tbody>
 </table></div>
 <ol class="steps"><li>Press <span class="ui">Continue</span>. The token is saved to your GitHub secrets.</li></ol>
-<div class="tip"><strong>Other boards</strong><p>For Notion, paste your database address, then type the integration secret (from notion.so/my-integrations) in the terminal. In Notion, open the database, choose Connections and add your QAmeleon integration so it can see it. The database's status options become the columns. <span class="ui">Your own</span> links to the guide for connecting any other board. Slack, Teams, email and Datadog are not set up here: you add them in the console, under <a href="#console-connections">Connections</a>.</p></div>
+<div class="tip"><strong>Other boards</strong><p><span class="ui">Your own</span> links to the guide for connecting any other board. Slack, Teams, email and Datadog are not set up here: you add them in the console, under <a href="#console-connections">Connections</a>.</p></div>
 </section>
 
 <section id="setup-build">
@@ -298,14 +308,14 @@ footer a{display:inline-block;padding-block:3px}
 <p class="lead">The loop is on. This screen shows what now runs on its own, and offers to review the tickets already waiting.</p>
 <div class="grid2">
 <div class="card"><strong>Weekdays 07:30</strong><p>The morning check, in your time zone. Report on the board and in your console.</p></div>
-<div class="card"><strong>Every deploy</strong><p>Checks the new build on dev.</p></div>
+<div class="card"><strong>Every deploy</strong><p>Checks the new build on dev. Have your deploy pipeline send a <code>repository_dispatch</code> event called <code>deployed</code> to this repository after each deploy.</p></div>
 <div class="card"><strong>Your review column</strong><p>Reviews tickets when you ask.</p></div>
 <div class="card"><strong>Your findings column</strong><p>Bugs land here with repro steps.</p></div>
 </div>
 <h3>Review the first batch</h3>
 <ol class="steps">
 <li>Check the list of tickets waiting and the cost estimate under it. A review usually costs between $0.30 and $0.65 a ticket on your Anthropic key.</li>
-<li>Press <span class="ui">Review</span>. The first time, the terminal asks for your Anthropic API key. It is saved for CI.</li>
+<li>Press <span class="ui">Review 3 tickets</span> (the number is how many are waiting). The first time, the terminal asks for your Anthropic API key. It is saved for CI.</li>
 <li>Watch each ticket go from Waiting to Reviewing to Reviewed. Each takes a few minutes, and the line under it says what QAmeleon is doing right now.</li>
 <li>Read the result on each ticket, then press <span class="ui">Approve and publish</span>. Or <span class="ui">Not now</span>: nothing is touched.</li>
 </ol>
@@ -335,7 +345,7 @@ footer a{display:inline-block;padding-block:3px}
 <p class="lead">The front page: is QAmeleon publishing, does anything need you, and how did this morning go.</p>
 <h3>What you see</h3>
 <ul>
-<li><strong>The banner</strong> says how publishing stands: <em>QAmeleon publishes on its own</em> (green), <em>Approval mode</em> or <em>Tightened</em> (amber), or <em>Paused</em> (red), with <span class="ui">Go to Controls</span> when it is not green.</li>
+<li><strong>The banner</strong> says how publishing stands: <em>QAmeleon publishes on its own</em> (green), <em>Approval mode</em> or <em>Tightened</em> (amber), or <em>Paused</em> (red), with <span class="ui">Go to Controls</span> when publishing is paused or tightened.</li>
 <li><strong>Four cards:</strong> Waiting for you, the number of tickets in your review column, the last 24 hours (published, held, bugs raised and cost), and the share of findings your team accepted.</li>
 <li><strong>Rejected findings:</strong> a bar showing how many findings people rejected, with an amber mark at the limit. Above it, QAmeleon stops publishing on its own.</li>
 <li><strong>This morning:</strong> the morning check's result with <span class="ui">Read it</span>, the build on dev and when it was deployed, and the last batch.</li>
@@ -364,7 +374,7 @@ footer a{display:inline-block;padding-block:3px}
 <li>Press <span class="ui">Refresh</span> if you moved cards in since the page was read.</li>
 <li>Pick the tickets to review, or press <span class="ui">Pick all</span>. Up to 10 go in one batch. Each ticket shows how many steps it has to verify (or that it will be reviewed against its description) and when it was last reviewed.</li>
 <li>Check the estimated cost at the bottom, worked out from your board's past reviews.</li>
-<li>Press <span class="ui">Review</span>. Each ticket runs in its own session behind the write fence, and the list shows Waiting, Reviewing and Reviewed.</li>
+<li>Press <span class="ui">Review 3 tickets</span> (the number is how many you picked). Each ticket runs in its own session behind the write fence, and the list shows Waiting, Reviewing and Reviewed.</li>
 <li>When the batch is done, the page shows what was <strong>published by QAmeleon</strong> (with any bugs raised and tickets moved) and what was <strong>held for a person</strong>, with the cost.</li>
 <li>If anything was held, press <span class="ui">Go to Waiting for you</span>. Otherwise <span class="ui">Back to the queue</span>.</li>
 </ol>
@@ -430,7 +440,7 @@ footer a{display:inline-block;padding-block:3px}
 <li><strong>Automatic tightening.</strong> The panel shows how many recent findings were rejected. Above the limit, QAmeleon stops publishing on its own and asks first. Read what was rejected, then press <span class="ui">Reset</span>.</li>
 <li><strong>The guards.</strong> The list at the bottom shows every guard, always on, and whether publishing is in auto or approval mode.</li>
 </ol>
-<div class="tip"><strong>How a finding counts as rejected</strong><p>When someone on your team triages a finding as wrong, or not a bug, it counts against the rate. That is how your team's clicks keep QAmeleon honest.</p></div>
+<div class="tip"><strong>How a finding counts as rejected</strong><p>Add the label <code>qauto-rejected</code> to a finding that is wrong or not a bug. Moving a finding out of the findings column without that label counts as accepted. Once five findings are triaged, more than one in five rejected stops QAmeleon publishing on its own.</p></div>
 </section>
 
 <section id="console-settings">
@@ -540,14 +550,15 @@ footer a{display:inline-block;padding-block:3px}
 <thead><tr><th scope="col">Severity</th><th scope="col">When</th></tr></thead>
 <tbody>
 <tr><td><strong>Critical</strong></td><td>Only four cases: another account's data is reachable, data the customer already had is destroyed or corrupted, sign-in or payment is broken, or a feature nobody can use. Always waits for a person.</td></tr>
-<tr><td><strong>Serious</strong></td><td>A real failure people will hit, for example a change that does not save.</td></tr>
+<tr><td><strong>Serious</strong></td><td>A normal user cannot finish what they came to do, or is shown a wrong result with nothing to make them doubt it. For example, a change that does not save.</td></tr>
 <tr><td><strong>Moderate</strong></td><td>It works, but it misleads or gets in the way, for example a missing undo, or a limit shown only after the work is done.</td></tr>
 <tr><td><strong>Minor</strong></td><td>Polish. Minor findings go on one polish ticket per reviewed ticket, not one each.</td></tr>
 <tr><td><strong>Note</strong></td><td>Worth knowing, nothing to fix.</td></tr>
 </tbody>
 </table></div>
+<p>QAmeleon sets the severity from what the problem does to the customer, so the same problem gets the same severity on every ticket. A bug an earlier review rated keeps that rating. A review that would change it waits for a person.</p>
 <h3>Step results in a review</h3>
-<p>Each "How to verify manually" step is marked <strong>pass</strong>, <strong>fail</strong>, <strong>blocked</strong> (it says exactly what would unblock it, often a test account or some data) or <strong>for a person</strong> (it needs access QAmeleon does not have, such as a test card or cloud logs). A ticket moves on only when every step passed.</p>
+<p>Each "How to verify manually" step is marked <strong>pass</strong>, <strong>fail</strong>, <strong>blocked</strong> (it says exactly what would unblock it, often a test account or some data) or <strong>Needs a person</strong> (it needs access QAmeleon does not have, such as a test card or cloud logs). A ticket moves on only when every step passed.</p>
 </section>
 
 <section id="guards">
@@ -571,6 +582,8 @@ footer a{display:inline-block;padding-block:3px}
 <tr><td>Waiting on another held ticket</td><td>Publish the ticket it points at first.</td></tr>
 <tr><td>Review stopped by the model provider</td><td>Read what was flagged, then run it again or review it by hand.</td></tr>
 <tr><td>Publishing paused or tightened</td><td>Someone pressed pause, or too many findings were rejected recently. See <a href="#console-controls">Controls</a>.</td></tr>
+<tr><td>A different severity for a known bug</td><td>An earlier review rated this bug and this one would change it. The earlier rating stands unless you change it on the bug.</td></tr>
+<tr><td>Not ready to publish</td><td>The verdict is incomplete. Run it again.</td></tr>
 </tbody>
 </table></div>
 <h3>Things QAmeleon never does</h3>
@@ -578,7 +591,7 @@ footer a{display:inline-block;padding-block:3px}
 <li>Pay, publish, send, invite or check out in your app. Those writes are always blocked.</li>
 <li>Write to a look-only account, or delete anything it did not create.</li>
 <li>Follow instructions written in a ticket.</li>
-<li>Move a ticket backwards, or to Done.</li>
+<li>Move a ticket backwards.</li>
 <li>Post a report with anything that looks like a password or token in it. If one is found, nothing goes out.</li>
 </ul>
 </section>
@@ -598,7 +611,7 @@ footer a{display:inline-block;padding-block:3px}
 <tr><td><code>qameleon run --dry-run</code></td><td>The full morning check. Posts nothing.</td></tr>
 <tr><td><code>qameleon review queue</code></td><td>Tickets waiting in the review column.</td></tr>
 <tr><td><code>qameleon review run APP-12 APP-14</code></td><td>Reviews those tickets and publishes what no guard holds.</td></tr>
-<tr><td><code>qameleon review approve APP-12 --by "Your Name"</code></td><td>Approves a held review. Add <code>--accept critical-finding</code> or <code>--accept security-finding</code> when the card asks.</td></tr>
+<tr><td><code>qameleon review approve APP-12 --by "Your Name"</code></td><td>Records your approval of a held review. Add <code>--accept critical-finding</code>, <code>security-finding</code> or <code>spend-step</code>, or <code>--accept-suspicious</code>, when the card asks. Then run <code>qameleon review publish APP-12</code>.</td></tr>
 <tr><td><code>qameleon review pause --by "Your Name"</code></td><td>The kill switch. <code>review resume</code> turns it back on.</td></tr>
 <tr><td><code>qameleon review reset --by "Your Name"</code></td><td>Turns publishing back on after tightening.</td></tr>
 <tr><td><code>qameleon review status</code></td><td>Publishing mode, pause, tightening and acceptance rate.</td></tr>
@@ -614,7 +627,7 @@ footer a{display:inline-block;padding-block:3px}
 <thead><tr><th scope="col">You see</th><th scope="col">Do this</th></tr></thead>
 <tbody>
 <tr><td>"The GitHub CLI is not installed" or "not signed in"</td><td>Install it from cli.github.com, run <code>gh auth login</code>, then try the step again.</td></tr>
-<tr><td>"This GitHub login is not allowed to do that"</td><td>Your login needs write access to the repository. Ask an owner, or pick another repository.</td></tr>
+<tr><td>"This GitHub login is not allowed to do that"</td><td>Your login needs admin access to the repository. Ask an owner, or pick another repository.</td></tr>
 <tr><td>The page seems stuck on a step</td><td>Look for the amber <span class="ui">Your turn, in the terminal</span> box. The terminal is waiting for you to type something.</td></tr>
 <tr><td>"Have a look" finds nothing</td><td>Check the dev app is running and the address opens in your browser. Then fill in the sign-in page or API host it asks for.</td></tr>
 <tr><td>An account says "Not signed in"</td><td>Check the email and password by signing in yourself, then press the button again. Only that account is asked for.</td></tr>
@@ -623,7 +636,7 @@ footer a{display:inline-block;padding-block:3px}
 <tr><td>Most review steps come back blocked</td><td>The test accounts are empty. Run <code>qameleon doctor --review</code>: it names the next thing to add, usually a look-only account with real data.</td></tr>
 <tr><td>A destination says "Needs a secret"</td><td>Remove it and add it again from the console, typing the secret in the terminal when asked.</td></tr>
 <tr><td>A new destination gets nothing in the morning</td><td>Commit <code>qa.config.json</code>. CI only sends to destinations in the committed file.</td></tr>
-<tr><td>"The setup server did not answer"</td><td>The terminal running setup was closed. Run <code>qameleon setup</code> again; it picks up where you were.</td></tr>
+<tr><td>"The setup server did not answer"</td><td>The terminal running setup was closed. Run <code>qameleon setup</code> again and go through the steps again. The pull request you already opened is updated, not duplicated.</td></tr>
 </tbody>
 </table></div>
 <a class="top" href="#contents">Back to the contents</a>
