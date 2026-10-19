@@ -168,12 +168,12 @@ footer a{display:inline-block;padding-block:3px}
 <tbody>
 <tr><td><strong>Node.js 22 or newer</strong></td><td>QAmeleon runs on Node, on your machine for setup and in CI after.</td></tr>
 <tr><td><strong>The GitHub CLI, signed in</strong></td><td>Install it from <a href="https://cli.github.com">cli.github.com</a> and run <code>gh auth login</code>. Setup uses your login to open a pull request and save secrets. You need admin access to the repository, so setup can save its secrets.</td></tr>
-<tr><td><strong>Your QAmeleon access key</strong></td><td>It is in your invite email. You install QAmeleon with it, and setup saves it to your repository so your CI can fetch QAmeleon each morning.</td></tr>
-<tr><td><strong>A browser for QAmeleon</strong></td><td>Run <code>npx playwright install chromium</code> once. Setup uses it to sign in and run the first dry run.</td></tr>
-<tr><td><strong>Claude Code</strong></td><td>Run <code>npm install -g @anthropic-ai/claude-code</code>. Reviews you start from setup or the console run on your machine with it.</td></tr>
+<tr><td><strong>Your QAmeleon access key</strong></td><td>It is in your invite email. You install QAmeleon with it, and setup asks for it once more at the end to save it to your repository, so your CI can fetch QAmeleon each morning. Keep it to hand.</td></tr>
+<tr><td><strong>A browser for QAmeleon</strong></td><td>Run <code>npx playwright install chromium</code> once. Setup uses it to look at your app and run the first dry run.</td></tr>
+<tr><td><strong>Claude Code</strong></td><td>Run <code>npm install -g @anthropic-ai/claude-code --allow-scripts=@anthropic-ai/claude-code</code>. Reviews you start from setup or the console run on your machine with it.</td></tr>
 <tr><td><strong>A repository on GitHub with Actions</strong></td><td>QAmeleon adds one workflow and runs there. GitLab is coming soon.</td></tr>
 <tr><td><strong>Your dev app, running</strong></td><td>The address of a dev or test environment. Never production.</td></tr>
-<tr><td><strong>Two test accounts in different customers</strong></td><td>So it can prove one customer cannot see another's data. A third, borrowed account with real data is optional and stays look only.</td></tr>
+<tr><td><strong>Two test accounts in different customers</strong></td><td>So it can prove one customer cannot see another's data. A third, borrowed account with real data is optional and stays look only. A public site with no sign-in needs none.</td></tr>
 <tr><td><strong>A board: Jira, Trello or Notion</strong></td><td>For Jira, an API token. For Trello, an API key and token. For Notion, an integration secret. You will pick three columns.</td></tr>
 <tr><td><strong>An Anthropic API key</strong></td><td>Ticket reviews run on it. We suggest a separate workspace with a spend limit. The morning and deploy checks cost nothing.</td></tr>
 </tbody>
@@ -185,7 +185,7 @@ footer a{display:inline-block;padding-block:3px}
 <p class="kick">Getting started</p>
 <h2>Open setup</h2>
 <ol class="steps">
-<li>Install QAmeleon with the command in your invite email. It uses your access key, so keep it to yourself.</li>
+<li>Install QAmeleon with the command in your invite email. It uses your access key, so keep it to yourself. The command includes <code>--allow-git=root</code>, which npm 12 needs to install from GitHub; older npm ignores it.</li>
 <li>Open a terminal in your app's repository folder and run:
 <div class="term"><b>$</b> qameleon setup</div></li>
 <li>Your browser opens the setup page. It is served from your own machine only, with a one-time key, so nobody else can reach it.</li>
@@ -223,6 +223,7 @@ footer a{display:inline-block;padding-block:3px}
 <p class="lead">QAmeleon works out how your app signs in and where its API is. You only confirm.</p>
 <ol class="steps">
 <li>Type your dev app's address in <span class="ui">Dev app address</span>, for example <code>https://dev.yourapp.com</code>.</li>
+<li>If your app has no sign-in, like a marketing site or a blog, tick <span class="ui">My app has no sign-in</span>. QAmeleon then tests it as a visitor, signed out, and the Accounts step has nothing to ask.</li>
 <li>Press <span class="ui">Have a look</span> (or Enter). QAmeleon opens the app, finds the sign-in form and listens to the API calls.</li>
 <li>Check the list it found: sign-in page, API address, how the session is kept, the build file and your time zone.</li>
 <li>If something is missing, a red box says what, and a field appears for it: <span class="ui">Sign-in page</span> (for example <code>/account/login</code>) or <span class="ui">API host</span> (for example <code>api.yourapp.com</code>). Fill it in and press <span class="ui">Have a look</span> again.</li>
@@ -234,7 +235,7 @@ footer a{display:inline-block;padding-block:3px}
 <section id="setup-accounts">
 <p class="kick">Setup, Connect 3 of 4</p>
 <h2>Accounts: add test accounts</h2>
-<p class="lead">Two accounts in different customers let QAmeleon check one customer cannot reach another's data. A borrowed account with real data unblocks deeper review steps.</p>
+<p class="lead">Two accounts in different customers let QAmeleon check one customer cannot reach another's data. A borrowed account with real data unblocks deeper review steps. If you ticked <span class="ui">My app has no sign-in</span>, this step says no test accounts are needed: press <span class="ui">Continue</span>.</p>
 <p>The screen lists the accounts it wants: an owner, a second customer, and an optional borrowed account. For each one, choose how QAmeleon may use it:</p>
 <div class="tw"><table>
 <thead><tr><th scope="col">Choice</th><th scope="col">What it means</th></tr></thead>
