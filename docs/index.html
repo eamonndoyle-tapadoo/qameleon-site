@@ -185,7 +185,7 @@ footer a{display:inline-block;padding-block:3px}
 <p class="kick">Getting started</p>
 <h2>Open setup</h2>
 <ol class="steps">
-<li>Install QAmeleon with the command in your invite email. It uses your access key, so keep it to yourself. The command includes <code>--allow-git=root</code>, which npm 12 needs to install from GitHub; older npm ignores it.</li>
+<li>Install QAmeleon with the commands in your invite email: the first downloads QAmeleon with your access key, the second installs that file. They work with any npm, including npm 12. The key is yours alone, so keep it to yourself.</li>
 <li>Open a terminal in your app's repository folder and run:
 <div class="term"><b>$</b> qameleon setup</div></li>
 <li>Your browser opens the setup page. It is served from your own machine only, with a one-time key, so nobody else can reach it.</li>
@@ -629,6 +629,7 @@ footer a{display:inline-block;padding-block:3px}
 <div class="tw"><table>
 <thead><tr><th scope="col">You see</th><th scope="col">Do this</th></tr></thead>
 <tbody>
+<tr><td>On Windows, GitHub keeps asking you to "Select an account", one of them <code>x-access-token</code></td><td>An older install line saved your access key as a second GitHub account. Run <code>git credential-manager github logout x-access-token</code> once, or remove that GitHub entry in Windows Credential Manager. Your own GitHub login is not touched.</td></tr>
 <tr><td>"The GitHub CLI is not installed" or "not signed in"</td><td>Install it from cli.github.com, run <code>gh auth login</code>, then try the step again.</td></tr>
 <tr><td>"This GitHub login is not allowed to do that"</td><td>Your login needs admin access to the repository. Ask an owner, or pick another repository.</td></tr>
 <tr><td>The page seems stuck on a step</td><td>Look for the amber <span class="ui">Your turn, in the terminal</span> box. The terminal is waiting for you to type something.</td></tr>
